@@ -1,0 +1,6 @@
+.chat-message-header {
+    margin-bottom: 3px;
+    border-bottom: 1px solid #17a2b8;
+    display: flex;
+    justify-content: space-between;
+}

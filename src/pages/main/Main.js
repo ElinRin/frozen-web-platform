@@ -7,6 +7,7 @@ import {
 } from "reactstrap";
 import { DaysOffLayout } from "../../components/daysoff-layout/DaysOffLayout";
 import { BirthdaysLayout } from "../../components/birthdays-layout/BirthdaysLayout";
+import { NewsLayout } from "../../components/news-layout/NewsLayout";
 
 import photo from "../../mocks/photo_example.jpg";
 import "./Main.css";
@@ -38,7 +39,7 @@ export const Main = () => (
         </div>
       </Col>
       <Col xs="8">
-        Here will be news
+        <NewsLayout />
       </Col>
     </Row>
   </Container>
