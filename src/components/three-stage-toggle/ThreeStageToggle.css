@@ -9,7 +9,7 @@
 
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(2, 6rem);
+    grid-template-columns: 7rem 6rem;
     grid-column-gap: 1rem;
     margin: 0.5rem 0;
 }
@@ -72,26 +72,26 @@
     left: 33%;
 }
 
-.switcher-radio-on:checked  ~ .switcher-slider {
+.st_on {
     background-color: #81EA89;
 }
 
-.switcher-radio-neutral:checked  ~ .switcher-slider {
+.st_neutral {
     background: #ddd;
 }
 
-.switcher-radio-off:checked  ~ .switcher-slider {
+.st_off {
     background-color: #ED8282;
 }
 
-.switcher-radio-on:checked  ~ .switcher-slider:after {
+.st_on:after {
     left: calc(2*(100%/3));
 }
 
-.switcher-radio-neutral:checked  ~ .switcher-slider:after {
+.st_neutral:after {
     left: calc(1px + 100%/3);
 }
 
-.switcher-radio-off:checked  ~ .switcher-slider:after {
+.st_off:after {
     left: 1px;
 }

@@ -1,13 +1,32 @@
-import React from "react";
+import React, {useState} from "react";
 
 import "./ThreeStageToggle.css";
 
-export const ThreeStageToggle = ({index}) => {
+export const ThreeStageToggle = ({index, name, updateValue}) => {
+    const [inputValue, setInputValue] = useState('neutral');
+
+    const onChecked = (event) => {
+        setInputValue(event.target.value);
+        switch (event.target.value) {
+            case 'off':
+              updateValue(index, false);
+                break;
+            case 'neutral':
+              updateValue(index, null);
+                break;
+            case 'on':
+              updateValue(index, true);
+                break;
+        }
+    };
+
     return (
         <>
             <div className="grid-container">
                 <div className="label">
-                    <p className="label-text">Label</p>
+                    <p className="label-text">
+                        {name}
+                    </p>
                 </div>
                 <div key={index}
                      className='switcher'>
@@ -16,6 +35,7 @@ export const ThreeStageToggle = ({index}) => {
                            className='switcher-radio-off'
                            type='radio'
                            name={`value${index}`}
+                           onChange={onChecked}
                            value='off'/>
 
                     <label className='switcher-label switcher-neutral'
@@ -24,18 +44,20 @@ export const ThreeStageToggle = ({index}) => {
                            className='switcher-radio-neutral'
                            type='radio'
                            name={`value${index}`}
+                           onChange={onChecked}
                            value='neutral'
-                           checked/>
+                           />
 
                     <label className='switcher-label switcher-on'
                            htmlFor={`on${index}`}>on</label>
                     <input id={`on${index}`}
                            className='switcher-radio-on'
                            type='radio'
+                           onChange={onChecked}
                            name={`value${index}`}
                            value='on'/>
 
-                    <div className='switcher-slider'></div>
+                    <div className={`switcher-slider st_${inputValue}`}></div>
                 </div>
             </div>
         </>

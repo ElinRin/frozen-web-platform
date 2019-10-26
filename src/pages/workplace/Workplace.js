@@ -1,6 +1,6 @@
 import React from "react";
 
-import { WorkplaceSearch, WorkplaceFilter } from "../../components";
+import {WorkplaceSearch, WorkplaceFilter, MeetingMap} from "../../components";
 
 export const Workplace = () => (
     <div className="home-container">
