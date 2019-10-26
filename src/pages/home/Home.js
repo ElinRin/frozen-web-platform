@@ -2,9 +2,8 @@ import React from "react";
 
 import { Profile } from "../../components/profile/Profile";
 
-export const Home = ({ match, location }) => (
+export const Home = ({ userId }) => (
   <div className="home-container">
-    {/* {console.log({ match, location })} */}
-    <Profile />
+    <Profile userId={userId}/>
   </div>
 );

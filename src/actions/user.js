@@ -43,10 +43,9 @@ export const currentUser = async dispatch => {
 
 export const fetchUser = async (userId, dispatch) => {
   await firebaseTools.fetchUser(userId).then(userInfo => {
-    console.log({ userInfo, data: userInfo.data });
     return dispatch({
       type: FETCH_USER,
-      payload: userInfo.data
+      payload: { [userId]: userInfo.data() }
     });
   });
 };
