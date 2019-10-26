@@ -16,11 +16,11 @@ export const Context = ({ children }) => {
 
   return (
     <UserInfoContext.Provider value={[userInfo, userInfoDispatch]}>
-      <WorkPlaceInfoContext value={[workPlaceInfo, workPlaceInfoDispatch]}>
-        <ParkingInfoContext value={[parkingInfo, parkingInfoDispatch]}>
+      <WorkPlaceInfoContext.Provider value={[workPlaceInfo, workPlaceInfoDispatch]}>
+        <ParkingInfoContext.Provider value={[parkingInfo, parkingInfoDispatch]}>
           {children}
-        </ParkingInfoContext>
-      </WorkPlaceInfoContext>
+        </ParkingInfoContext.Provider>
+      </WorkPlaceInfoContext.Provider>
     </UserInfoContext.Provider>
   );
 };
