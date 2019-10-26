@@ -10,7 +10,6 @@ import {
   Input,
   Label
 } from "reactstrap";
-import { RadioButtons } from "../radio-buttons/RadioButtons";
 
 import "./ModalButton.css"
 
@@ -26,7 +25,7 @@ export const ModalButton = ({ typeLabel, daysLabel, className }) => {
         <div>{daysLabel}</div>
       </div>
       <ModalArea isOpen={modal} toggle={toggle} className={className}>
-        <ModalHeader toggle={toggle}>Request Time Off</ModalHeader>
+        <ModalHeader toggle={toggle}>Request Time Off: {typeLabel}</ModalHeader>
         <ModalBody>
           <Form>
             <FormGroup>
@@ -37,7 +36,6 @@ export const ModalButton = ({ typeLabel, daysLabel, className }) => {
               <Label for="dateTo">To</Label>
               <Input type="date" id="dateTo" />
             </FormGroup>
-            <RadioButtons />
           </Form>
         </ModalBody>
         <ModalFooter>
