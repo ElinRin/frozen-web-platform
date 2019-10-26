@@ -8,13 +8,15 @@ import {
   Form,
   FormGroup,
   Input,
-  Label
+  Label, InputGroup, InputGroupAddon, ListGroup, ListGroupItem
 } from "reactstrap";
 
 export const ModalNewEvent = ({ className }) => {
   const [modal, setModal] = useState(false);
+  const [members, setMembers] = useState([]);
 
   const toggle = () => setModal(!modal);
+  const updMembers = (element) => { return () => setMembers([...members, element]) };
 
   return (
     <div style={{ float: 'left' }}>
@@ -39,12 +41,20 @@ export const ModalNewEvent = ({ className }) => {
             </FormGroup>
             <FormGroup>
               <Label for="eventMembers">Members</Label>
+              <InputGroup>
+                <Input placeholder="User search"/>
+                <InputGroupAddon addonType="append">
+                  <Button onClick={updMembers('Ilon Mask')}>Add</Button>
+                </InputGroupAddon>
+              </InputGroup>
+            </FormGroup>
+            <ListGroup>
               {
-                [...Array(5).keys()].map(i => {
-                  return  <Input type="text" id={`eventMembers:${i}`} />
+                members.map(name => {
+                  return <ListGroupItem>{name}</ListGroupItem>
                 })
               }
-            </FormGroup>
+            </ListGroup>
           </Form>
         </ModalBody>
         <ModalFooter>
