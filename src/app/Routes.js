@@ -12,15 +12,11 @@ export const Routes = () => (
       <MainNavbar />
       <Switch>
         <Route exact path="/" component={Login} />
-        <Route path="/login" component={Login} />
-        <Route path="/main" component={Main} />
-        <Route path="/employee/:id" component={Home} />
-        <Route
-          exact
-          path="/employee/:id/workplace"
-          render={() => <Workplace />}
-        />
-        <Route exact path="/parking" render={() => <Parking />} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/main" component={Main} />
+        <Route exact path="/employee/:id" component={Home} />
+        <Route exact path="/employee/:id/workplace" component={Workplace} />
+        <Route exact path="/parking" component={Parking} />
       </Switch>
     </div>
   </Router>
