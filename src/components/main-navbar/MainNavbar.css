@@ -32,7 +32,3 @@ a.main-navbar-logo-container:hover {
   justify-content: flex-end;
   align-items: center;
 }
-
-.main-navbar-items :last-child {
-  margin-left: 10px !important;
-}
