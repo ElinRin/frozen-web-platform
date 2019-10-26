@@ -1,0 +1,12 @@
+.meetings-wrapper {
+    background: white;
+    border-radius: var(--main-border-radius);
+    margin-top: 50px;
+    padding: 20px;
+    width: 60%;
+}
+
+.meetings-header {
+    margin: 0 20px 20px 0;
+    border-bottom: 1px solid #e20074;
+}
