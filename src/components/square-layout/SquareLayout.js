@@ -2,8 +2,7 @@ import React from "react";
 import {
   Col,
   Container,
-  Row,
-  Button
+  Row
 } from "reactstrap";
 
 import './SquareLayout.css'

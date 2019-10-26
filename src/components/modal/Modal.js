@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Button,
   Modal as ModalArea,
@@ -9,40 +9,41 @@ import {
   FormGroup,
   Input,
   Label
-} from 'reactstrap';
+} from "reactstrap";
 import { RadioButtons } from "../radio-buttons/RadioButtons";
 
-export const Modal = (props) => {
-  const {
-    buttonLabel,
-    className
-  } = props;
-
+export const Modal = ({ buttonLabel, className }) => {
   const [modal, setModal] = useState(false);
 
   const toggle = () => setModal(!modal);
 
   return (
     <div>
-      <Button color="primary" onClick={toggle}>{buttonLabel}</Button>
+      <Button color="primary" onClick={toggle}>
+        {buttonLabel}
+      </Button>
       <ModalArea isOpen={modal} toggle={toggle} className={className}>
         <ModalHeader toggle={toggle}>Request Time Off</ModalHeader>
         <ModalBody>
           <Form>
             <FormGroup>
               <Label for="dateFrom">From</Label>
-              <Input type="date" id="dateFrom"/>
+              <Input type="date" id="dateFrom" />
             </FormGroup>
             <FormGroup>
               <Label for="dateTo">To</Label>
-              <Input type="date" id="dateTo"/>
+              <Input type="date" id="dateTo" />
             </FormGroup>
             <RadioButtons />
           </Form>
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={toggle}>Submit</Button>{' '}
-          <Button color="secondary" onClick={toggle}>Cancel</Button>
+          <Button color="primary" onClick={toggle}>
+            Submit
+          </Button>
+          <Button color="secondary" onClick={toggle}>
+            Cancel
+          </Button>
         </ModalFooter>
       </ModalArea>
     </div>
