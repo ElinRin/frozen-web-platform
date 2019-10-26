@@ -23,6 +23,18 @@ export const firebaseTools = {
     message: 'logout',
   })),
 
+  fetchMe: () => {
+    const userId = firebaseAuth.currentUser.uid;
+    return usersFS.doc(userId).get()
+      .then(profile => ({userId, ...profile.data()}))
+      .catch(error => ({
+        errorCode: error.code,
+        errorMessage: error.message,
+      }));
+  },
+
+  currentUser: () => firebaseAuth.currentUser.uid,
+
   fetchUser: userId => usersFS.doc(userId).get()
     .then(userInfo => userInfo)
     .catch(error => ({
@@ -47,8 +59,6 @@ export const firebaseTools = {
       errorCode: error.code,
       errorMessage: error.message,
     })),
-
-  currentUser: () => firebaseAuth.currentUser.uid,
 
   fetchWorkPlace: workPlaceId => workPlacesFS.doc(workPlaceId).get()
     .then(workPlaceInfo => workPlaceInfo)

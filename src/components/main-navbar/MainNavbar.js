@@ -58,5 +58,5 @@ export const MainNavbar = props => {
     </Navbar>
   );
 
-  return <>{userInfo.id && renderNavBar()} </>;
+  return <>{userInfo.userId && renderNavBar()} </>;
 };

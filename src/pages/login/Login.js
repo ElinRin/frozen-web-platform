@@ -1,24 +1,24 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Button, Form, FormGroup, Input } from "reactstrap";
-import { UserInfoContext } from "../../app/Context";
+import { ProfileContext } from "../../app/Context";
 import { loginUser } from "../../actions/user";
 import "./Login.css";
-export const Login = ({ history }) => {
-  const [userInfo, userInfoDispatch] = useContext(UserInfoContext);
+
+export const Login = ({history}) => {
+  const [profile, profileDispatch] = useContext(ProfileContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const handleSubmit = event => {
+  const handleSubmit = async event => {
     event.preventDefault();
-    loginUser({ email, password }, userInfoDispatch).then(() => {
-      if (userInfo.id && userInfo.id.length) {
-        history.push(`./employee/${userInfo.id}`);
-      }
-    });
+    await loginUser({ email, password }, profileDispatch);
   };
 
-  if (userInfo.id && userInfo.id.length) {
-    history.push(`./employee/${userInfo.id}`);
-  }
+  useEffect(() => {
+    if (profile.userId && profile.userId.length) {
+      history.push(`./employee/${profile.userId}`);
+    }
+  }, [profile.userId]);
+
   return (
     <div className="login-container">
       <Form className="login-form" onSubmit={handleSubmit}>
