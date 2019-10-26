@@ -5,7 +5,7 @@ import {
     CHANGE_STATUS,
     FETCH_BIRTHDAY_USERS
 } from './types';
-import { firebaseTools } from "./firebase";
+import { firebaseTools } from "../utils/firebase";
 
 export const loginUser = user => async dispatch =>
     dispatch({

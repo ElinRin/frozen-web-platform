@@ -3,7 +3,7 @@ import {
     FETCH_PARKING_LIST_BY_FLOOR,
     RESERVE_PARKING
 } from './types';
-import { firebaseTools } from "./firebase";
+import { firebaseTools } from "../utils/firebase";
 
 export const fetchParking = parkingId => async dispatch =>
     dispatch({

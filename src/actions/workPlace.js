@@ -3,7 +3,7 @@ import {
     FETCH_WORK_PLACE_LIST_BY_FLOOR,
     RESERVE_WORK_PLACE
 } from './types';
-import { firebaseTools } from "./firebase";
+import { firebaseTools } from "../utils/firebase";
 
 export const fetchWorkPlace = workPlaceId => async dispatch =>
     dispatch({
