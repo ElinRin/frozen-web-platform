@@ -23,7 +23,7 @@ export const profile = (state = null, action) => {
       return { ...state, ...action.payload};
 
     case LOGOUT_USER:
-      return { ...state, ...action.payload};
+      return {};
 
     case FETCH_ME:
       return { ...state, ...action.payload};

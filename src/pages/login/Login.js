@@ -17,7 +17,7 @@ export const Login = ({history}) => {
     if (profile.userId && profile.userId.length) {
       history.push(`./employee/${profile.userId}`);
     }
-  }, [profile.userId]);
+  }, [history, profile.userId]);
 
   return (
     <div className="login-container">
