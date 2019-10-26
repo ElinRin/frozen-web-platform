@@ -14,7 +14,7 @@ import {
   CURRENT_USER,
   SEARCH_WORK_PLACE_BY_USER_ID,
   SEARCH_WORK_PLACE_BY_PROPERTIES
-} from '../actions/types';
+} from "../actions/types";
 
 export const user = (state = null, action) => {
   switch (action.type) {
@@ -38,6 +38,8 @@ export const user = (state = null, action) => {
 
     case CURRENT_USER:
       return action.payload;
+    default:
+      return;
   }
 };
 
@@ -57,7 +59,8 @@ export const workPlace = (state = null, action) => {
 
     case SEARCH_WORK_PLACE_BY_PROPERTIES:
       return action.payload;
-
+    default:
+      return;
   }
 };
 
@@ -71,5 +74,7 @@ export const parking = (state = null, action) => {
 
     case RESERVE_PARKING:
       return action.payload;
+    default:
+      return;
   }
 };

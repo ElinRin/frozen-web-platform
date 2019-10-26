@@ -2,7 +2,6 @@ import React, { useState, useContext } from "react";
 import { Button, Form, FormGroup, Input } from "reactstrap";
 import { UserInfoContext } from "../../app/Context";
 import { loginUser } from "../../actions/user";
-import firebase from "firebase";
 import "./Login.css";
 export const Login = ({ history }) => {
   const [userInfo, userInfoDispatch] = useContext(UserInfoContext);
@@ -10,13 +9,16 @@ export const Login = ({ history }) => {
   const [password, setPassword] = useState("");
   const handleSubmit = event => {
     event.preventDefault();
-    loginUser({ email, password }, userInfoDispatch).then(data => {
-      const uid = firebase.auth().currentUser.uid;
-
-      history.push(`./employee/${uid}`);
+    loginUser({ email, password }, userInfoDispatch).then(() => {
+      if (userInfo.id && userInfo.id.length) {
+        history.push(`./employee/${userInfo.id}`);
+      }
     });
   };
 
+  if (userInfo.id && userInfo.id.length) {
+    history.push(`./employee/${userInfo.id}`);
+  }
   return (
     <div className="login-container">
       <Form className="login-form" onSubmit={handleSubmit}>

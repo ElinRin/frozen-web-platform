@@ -6,15 +6,19 @@ import {
   FETCH_BIRTHDAY_USERS,
   SEARCH_USER_BY_FULL_NAME,
   CURRENT_USER
-} from './types';
-import {firebaseTools} from "../utils/firebase";
+} from "./types";
+import firebase from "firebase";
+import { firebaseTools } from "../utils/firebase";
 
-export const loginUser = async (user, dispatch) => {
-  await dispatch({
-    type: LOGIN_USER,
-    payload: firebaseTools.loginUser(user)
+export const loginUser = async (user, dispatch) =>
+  await firebaseTools.loginUser(user).then(() => {
+    const uid = firebase.auth().currentUser.uid;
+
+    return dispatch({
+      type: LOGIN_USER,
+      payload: { id: uid }
+    });
   });
-};
 
 export const logoutUser = async dispatch =>
   await dispatch({

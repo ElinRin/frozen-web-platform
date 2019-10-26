@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   Collapse,
   Media,
@@ -15,14 +15,16 @@ import {
 } from "reactstrap";
 import logo from "../../images/frozen32.png";
 import photo from "../../mocks/photo_example.jpg";
+import { UserInfoContext } from "../../app/Context";
 import "./MainNavbar.css";
 
 export const MainNavbar = props => {
   const [isOpen, setIsOpen] = useState(false);
+  const [userInfo] = useContext(UserInfoContext);
 
   const toggle = () => setIsOpen(!isOpen);
 
-  return (
+  const renderNavBar = () => (
     <Navbar color="white" light expand="md" className="main-navbar-container">
       <NavbarBrand href="/" className="main-navbar-logo-container">
         <Media object bottom src={logo} />
@@ -55,4 +57,6 @@ export const MainNavbar = props => {
       </Collapse>
     </Navbar>
   );
+
+  return <>{userInfo.id && renderNavBar()} </>;
 };
