@@ -1,5 +1,7 @@
 .main-navbar-container {
   min-height: 5vh;
+  border-bottom: #e3e3e3 solid 1px;
+  border-radius: 5px;
 }
 .main-navbar-logo-container {
   display: flex !important;

@@ -1,20 +1,22 @@
 .profile-photo {
-    width: 256px;
-    height: 256px;
-    border-radius: 50%;
+  width: 256px;
+  height: 256px;
+  border-radius: 50%;
 }
 
 .wrapper {
-    background-color: white;
-    border-radius: 2%;
-    padding: 20px;
+  background-color: white;
+  border: #e3e3e3 solid 1px;
+  border-radius: 5px;
+  margin-top: 50px;
+  padding: 20px;
 }
 
 .header {
-    align-items:center;
-    padding-top: 20px;
+  align-items: center;
+  padding-top: 20px;
 }
 
 .info {
-    padding-top: 20px;
+  padding-top: 20px;
 }
