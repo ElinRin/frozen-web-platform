@@ -3,7 +3,7 @@ import {
   Col,
   Container,
   Row,
-  Media
+  Media, Button
 } from "reactstrap";
 import { DaysOffLayout } from "../../components/daysoff-layout/DaysOffLayout";
 import { BirthdaysLayout } from "../../components/birthdays-layout/BirthdaysLayout";
@@ -19,7 +19,13 @@ export const Main = () => (
       </Col>
       <Col xs="2">
         <h3>Everett Soto</h3>
-        <h5>On work</h5>
+        <Button
+          color='primary'
+          className="profile-button"
+          onClick={() => {}} // TODO: менять статус при нажатии
+        >
+          On work
+        </Button>
       </Col>
       <Col xs="8">
         <BirthdaysLayout />
