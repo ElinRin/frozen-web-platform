@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import { navigate, usePath } from "hookrouter";
 import {
   Collapse,
   Media,
@@ -18,9 +19,14 @@ import photo from "../../mocks/photo_example.jpg";
 import { ProfileContext } from "../../app/Context";
 import "./MainNavbar.css";
 
-export const MainNavbar = props => {
+export const MainNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [profile] = useContext(ProfileContext);
+  const path = usePath();
+
+  if (path !== "/login" && !(profile.userId && profile.userId.length)) {
+    navigate("/login", true);
+  }
 
   const toggle = () => setIsOpen(!isOpen);
 
@@ -58,5 +64,6 @@ export const MainNavbar = props => {
     </Navbar>
   );
 
+  console.log({ profile });
   return <>{profile.userId && renderNavBar()} </>;
 };
