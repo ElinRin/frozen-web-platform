@@ -1,4 +1,5 @@
 import React from "react";
+import { Alert } from "reactstrap";
 
 import photo from "../../mocks/photo_example.jpg"
 
@@ -12,9 +13,9 @@ const items = [
 ];
 
 export const BirthdaysLayout = () => (
-  <div>
-    <h1 className="birthdays-header">Happy birthday!</h1>
-    <div className="birthdays-wrapper">
+  <div className="birthdays-wrapper">
+    <h2 className="birthdays-header">Happy birthday!</h2>
+    <div className="birthdays-body">
       {items.map(
         ({ photoUrl, userName, age }) => (
           <div className="birthdays-card">

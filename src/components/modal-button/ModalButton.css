@@ -3,7 +3,7 @@
     border-radius: var(--main-border-radius);
     color: rgba(56, 56, 56, 1);
     background-color: white;
-    margin: 1px;
+    margin: 10px 1px;
     padding: 2px;
     text-align: center;
 }
