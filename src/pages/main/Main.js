@@ -15,10 +15,10 @@ import "./Main.css";
 export const Main = () => (
   <Container className="wrapper-large">
     <Row>
-      <Col xs="2">
+      <Col xs="2" className="main-up-left-block main-left-block">
         <Media src={photo} className="profile-photo-small"/>
       </Col>
-      <Col xs="2">
+      <Col xs="2" className="main-up-right-block main-left-block">
         <h3>Everett Soto</h3>
         <Button
           color='primary'
@@ -32,8 +32,8 @@ export const Main = () => (
         <BirthdaysLayout />
       </Col>
     </Row>
-    <Row className="info">
-      <Col xs="4">
+    <Row>
+      <Col xs="4" className="main-left-block main-down-block">
         <div className="wrapper-days-off">
           <DaysOffLayout />
         </div>

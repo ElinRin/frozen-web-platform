@@ -1,7 +1,4 @@
 .wrapper-large {
-    background-color: white;
-    border: var(--main-border);
-    border-radius: var(--main-border-radius);
     margin-top: 50px;
     padding: 20px;
 }
@@ -12,10 +9,26 @@
     border-radius: 50%;
 }
 
-.info {
-    padding-top: 20px;
-}
-
 .profile-button {
     width: 100%;
+}
+
+.main-left-block {
+    background-color: white;
+}
+
+.main-up-left-block {
+    padding-top: 20px;
+    border-top-left-radius: 5px;
+}
+
+.main-up-right-block {
+    padding-top: 20px;
+    border-top-right-radius: 5px;
+}
+
+.main-down-block {
+    padding-bottom: 20px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
