@@ -24,9 +24,9 @@ export const MainNavbar = () => {
   const [profile] = useContext(ProfileContext);
   const path = usePath();
 
-  if (path !== "/login" && !(profile.userId && profile.userId.length)) {
-    navigate("/login", true);
-  }
+  // if (path !== "/login" && !(profile.userId && profile.userId.length)) {
+  //   navigate("/login", true);
+  // }
 
   const toggle = () => setIsOpen(!isOpen);
 

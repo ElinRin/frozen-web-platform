@@ -11,7 +11,7 @@ const routes = {
   "/": () => <Login />,
   "/login": () => <Login />,
   "/main": () => <Main />,
-  "/:id": ({ id }) => <Home userId={id} />,
+  "/u/:id": ({ id }) => <Home userId={id} />,
   "/workplace": () => <Workplace />,
   "/parking": () => <Parking />
 };
