@@ -15,12 +15,12 @@ import {
 } from "reactstrap";
 import logo from "../../images/frozen32.png";
 import photo from "../../mocks/photo_example.jpg";
-import { UserInfoContext } from "../../app/Context";
+import { ProfileContext } from "../../app/Context";
 import "./MainNavbar.css";
 
 export const MainNavbar = props => {
   const [isOpen, setIsOpen] = useState(false);
-  const [userInfo] = useContext(UserInfoContext);
+  const [profile] = useContext(ProfileContext);
 
   const toggle = () => setIsOpen(!isOpen);
 
@@ -58,5 +58,5 @@ export const MainNavbar = props => {
     </Navbar>
   );
 
-  return <>{userInfo.id && renderNavBar()} </>;
+  return <>{profile.userId && renderNavBar()} </>;
 };
