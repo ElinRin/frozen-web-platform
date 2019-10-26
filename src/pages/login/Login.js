@@ -1,10 +1,11 @@
 import React, { useState, useContext, useEffect } from "react";
+import { navigate } from "hookrouter";
 import { Button, Form, FormGroup, Input } from "reactstrap";
 import { ProfileContext } from "../../app/Context";
 import { loginUser } from "../../actions/user";
 import "./Login.css";
 
-export const Login = ({history}) => {
+export const Login = ({ history }) => {
   const [profile, profileDispatch] = useContext(ProfileContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -15,7 +16,7 @@ export const Login = ({history}) => {
 
   useEffect(() => {
     if (profile.userId && profile.userId.length) {
-      history.push(`./employee/${profile.userId}`);
+      navigate(`./${profile.userId}`);
     }
   }, [history, profile.userId]);
 
