@@ -1,6 +1,5 @@
 import React from "react";
 
-import './DaysOffLayout.css'
 import { ModalButton } from "../modal-button/ModalButton";
 
 const items = [
@@ -12,7 +11,7 @@ const items = [
 ];
 
 export const DaysOffLayout = () => (
-  <div className="container">
+  <div>
     {
       items.map(item => {
         return (<ModalButton

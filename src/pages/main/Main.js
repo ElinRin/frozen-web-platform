@@ -6,6 +6,7 @@ import {
   Media
 } from "reactstrap";
 import { DaysOffLayout } from "../../components/daysoff-layout/DaysOffLayout";
+import { BirthdaysLayout } from "../../components/birthdays-layout/BirthdaysLayout";
 
 import photo from "../../mocks/photo_example.jpg";
 import "./Main.css";
@@ -21,7 +22,7 @@ export const Main = () => (
         <h5>On work</h5>
       </Col>
       <Col xs="8">
-        <div>Here will be dates of birthdays</div>
+        <BirthdaysLayout />
       </Col>
     </Row>
     <Row className="info">
