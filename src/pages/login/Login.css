@@ -12,8 +12,8 @@
 .login-form {
   min-width: 400px;
   padding: 50px 50px 30px;
-  border: #e3e3e3 solid 1px;
-  border-radius: 5px;
+  border: var(--main-border);
+  border-radius: var(--main-border-radius);
   background-color: white;
   margin-bottom: 100px;
   display: flex;
