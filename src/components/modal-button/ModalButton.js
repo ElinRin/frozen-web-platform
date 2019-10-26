@@ -12,16 +12,19 @@ import {
 } from "reactstrap";
 import { RadioButtons } from "../radio-buttons/RadioButtons";
 
-export const Modal = ({ buttonLabel, className }) => {
+import "./ModalButton.css"
+
+export const ModalButton = ({ typeLabel, daysLabel, className }) => {
   const [modal, setModal] = useState(false);
 
   const toggle = () => setModal(!modal);
 
   return (
     <div>
-      <Button color="primary" onClick={toggle}>
-        {buttonLabel}
-      </Button>
+      <div className="modal-button" onClick={toggle}>
+        <div style={{ fontWeight: 'bold' }}>{typeLabel}</div>
+        <div>{daysLabel}</div>
+      </div>
       <ModalArea isOpen={modal} toggle={toggle} className={className}>
         <ModalHeader toggle={toggle}>Request Time Off</ModalHeader>
         <ModalBody>

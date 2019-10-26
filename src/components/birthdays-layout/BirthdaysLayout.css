@@ -1,0 +1,22 @@
+.birthdays-photo-small {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+}
+
+.birthdays-card {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    text-align: center;
+}
+
+.birthdays-wrapper {
+    display: flex;
+    justify-content: space-around;
+}
+
+.birthdays-header {
+    text-align: right;
+    margin: 0 20px 20px 0;
+}

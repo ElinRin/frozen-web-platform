@@ -5,13 +5,14 @@ import {
   Row,
   Media
 } from "reactstrap";
-import { SquareLayout } from "../../components/square-layout/SquareLayout";
+import { DaysOffLayout } from "../../components/daysoff-layout/DaysOffLayout";
+import { BirthdaysLayout } from "../../components/birthdays-layout/BirthdaysLayout";
 
 import photo from "../../mocks/photo_example.jpg";
 import "./Main.css";
 
 export const Main = () => (
-  <Container className="wrapper">
+  <Container className="wrapper-large">
     <Row>
       <Col xs="2">
         <Media src={photo} className="profile-photo-small"/>
@@ -21,12 +22,14 @@ export const Main = () => (
         <h5>On work</h5>
       </Col>
       <Col xs="8">
-        <div>Here will be dates of birthdays</div>
+        <BirthdaysLayout />
       </Col>
     </Row>
     <Row className="info">
       <Col xs="4">
-        <SquareLayout />
+        <div className="wrapper-days-off">
+          <DaysOffLayout />
+        </div>
       </Col>
       <Col xs="8">
         Here will be news
