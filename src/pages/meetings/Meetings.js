@@ -1,6 +1,7 @@
 import React from "react";
-import {Button, Col, Container, Row} from "reactstrap";
+import { Col, Container, Row } from "reactstrap";
 import { CustomCalendar } from "../../components/calendar/CustomCalendar";
+import { ModalNewEvent } from "../../components/modal-new-event/ModalNewEvent";
 
 import "./Meetings.css"
 
@@ -9,9 +10,7 @@ export const Meetings = () => (
       <Row>
         <Col className="meetings-wrapper">
           <div className="meetings-header">
-            <Button color="primary" style={{ float: 'left' }}>
-              Add new event
-            </Button>
+            <ModalNewEvent />
             <h1 style={{textAlign: 'right'}}>Your calendar</h1>
           </div>
           <CustomCalendar />

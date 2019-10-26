@@ -11,16 +11,16 @@ import {
   Label
 } from "reactstrap";
 
-import "./ModalButton.css"
+import "./ModalTimeOff.css"
 
-export const ModalButton = ({ typeLabel, daysLabel, className }) => {
+export const ModalTimeOff = ({ typeLabel, daysLabel, className }) => {
   const [modal, setModal] = useState(false);
 
   const toggle = () => setModal(!modal);
 
   return (
     <div>
-      <div className="modal-button" onClick={toggle}>
+      <div className="modal-time-off-button" onClick={toggle}>
         <div style={{ fontWeight: 'bold' }}>{typeLabel}</div>
         <div>{daysLabel}</div>
       </div>

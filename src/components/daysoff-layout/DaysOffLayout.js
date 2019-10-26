@@ -1,6 +1,6 @@
 import React from "react";
 
-import { ModalButton } from "../modal-button/ModalButton";
+import { ModalTimeOff } from "../modal-timeoff/ModalTimeOff";
 
 const items = [
   {'typeLabel': 'Vacation', 'daysLabel': '25 days'},
@@ -14,7 +14,7 @@ export const DaysOffLayout = () => (
   <div>
     {
       items.map(item => {
-        return (<ModalButton
+        return (<ModalTimeOff
           typeLabel={item['typeLabel']}
           daysLabel={item['daysLabel']}
         />)
