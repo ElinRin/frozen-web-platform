@@ -11,10 +11,10 @@ export const Routes = () => (
     <div className="app">
       <MainNavbar />
       <Switch>
-        <Route exact path="/" render={() => <Login />} />
-        <Route exact path="/login" render={() => <Login />} />
-        <Route exact path="/main" render={() => <Main />} />
-        <Route exact path="/employee/:id" render={() => <Home />} />
+        <Route exact path="/" component={Login} />
+        <Route path="/login" component={Login} />
+        <Route path="/main" component={Main} />
+        <Route path="/employee/:id" component={Home} />
       </Switch>
     </div>
   </Router>
