@@ -1,3 +1,9 @@
 import React from "react";
 
-export const Home = () => <></>;
+import { Profile } from "../../components/profile/Profile";
+
+export const Home = () => (
+  <div className="home-container">
+    <Profile />
+  </div>
+);
