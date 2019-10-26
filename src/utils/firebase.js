@@ -82,7 +82,7 @@ export const firebaseTools = {
 
   searchWorkPlaceByProperties: properties => {
     let wp = workPlacesFS;
-    for (key in properties) {
+    for (let key in properties) {
       wp = wp.where(key, "==", properties[key]);
     }
     return wp.get()
