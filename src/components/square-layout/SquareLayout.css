@@ -1,0 +1,7 @@
+.wrapper-sq-l {
+    border: var(--main-border);
+    border-radius: var(--main-border-radius);
+    margin: 1px;
+    padding: 10px;
+    text-align: center;
+}
