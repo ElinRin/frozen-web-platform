@@ -9,8 +9,13 @@ import {
   FETCH_PARKING,
   FETCH_PARKING_LIST_BY_FLOOR,
   RESERVE_PARKING,
-  FETCH_BIRTHDAY_USERS
-} from "../actions/types";
+  FETCH_BIRTHDAY_USERS,
+  SEARCH_USER_BY_FULL_NAME,
+  CURRENT_USER,
+  SEARCH_WORK_PLACE_BY_USER_ID,
+  SEARCH_WORK_PLACE_BY_PROPERTIES
+} from '../actions/types';
+
 export const user = (state = null, action) => {
   switch (action.type) {
     case LOGIN_USER:
@@ -27,8 +32,12 @@ export const user = (state = null, action) => {
 
     case FETCH_BIRTHDAY_USERS:
       return action.payload;
-    default:
-      return;
+
+    case SEARCH_USER_BY_FULL_NAME:
+      return action.payload;
+
+    case CURRENT_USER:
+      return action.payload;
   }
 };
 
@@ -42,8 +51,13 @@ export const workPlace = (state = null, action) => {
 
     case RESERVE_WORK_PLACE:
       return action.payload;
-    default:
-      return;
+
+    case SEARCH_WORK_PLACE_BY_USER_ID:
+      return action.payload;
+
+    case SEARCH_WORK_PLACE_BY_PROPERTIES:
+      return action.payload;
+
   }
 };
 
@@ -57,7 +71,5 @@ export const parking = (state = null, action) => {
 
     case RESERVE_PARKING:
       return action.payload;
-    default:
-      return;
   }
 };

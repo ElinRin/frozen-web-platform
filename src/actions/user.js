@@ -3,9 +3,11 @@ import {
   LOGOUT_USER,
   FETCH_USER,
   CHANGE_STATUS,
-  FETCH_BIRTHDAY_USERS
-} from "./types";
-import { firebaseTools } from "../utils/firebase";
+  FETCH_BIRTHDAY_USERS,
+  SEARCH_USER_BY_FULL_NAME,
+  CURRENT_USER
+} from './types';
+import {firebaseTools} from "../utils/firebase";
 
 export const loginUser = async (user, dispatch) => {
   await dispatch({
@@ -36,4 +38,16 @@ export const fetchBirthDayUsers = async dispatch =>
   await dispatch({
     type: FETCH_BIRTHDAY_USERS,
     payload: firebaseTools.fetchBirthDayUsers()
+  });
+
+export const searchUserByFullName = async (fullName, dispatch) =>
+  await dispatch({
+    type: SEARCH_USER_BY_FULL_NAME,
+    payload: firebaseTools.searchUserByFullName(fullName)
+  });
+
+export const currentUser = async dispatch =>
+  await dispatch({
+    type: CURRENT_USER,
+    payload: firebaseTools.currentUser()
   });
