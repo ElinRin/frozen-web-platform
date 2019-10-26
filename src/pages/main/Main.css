@@ -1,0 +1,17 @@
+.wrapper {
+    background-color: white;
+    border: var(--main-border);
+    border-radius: var(--main-border-radius);
+    margin-top: 50px;
+    padding: 20px;
+}
+
+.profile-photo-small {
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+}
+
+.info {
+    padding-top: 20px;
+}
