@@ -17,22 +17,38 @@ import {
 import logo from "../../images/frozen32.png";
 import photo from "../../mocks/photo_example.jpg";
 import { ProfileContext } from "../../app/Context";
+import { firebaseTools } from "../../utils/firebase";
+import { CURRENT_USER } from "../../actions/types";
 import "./MainNavbar.css";
 
 export const MainNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [profile] = useContext(ProfileContext);
+  const [profile, profileDispatch] = useContext(ProfileContext);
   const path = usePath();
 
-  // if (path !== "/login" && !(profile.userId && profile.userId.length)) {
-  //   navigate("/login", true);
-  // }
+  console.log({ profile, path });
+
+  if (path !== "/login" && !(profile.userId && profile.userId.length)) {
+    const id = firebaseTools.currentUser();
+    console.log({ id });
+    if (id && id.length) {
+      profileDispatch({
+        type: CURRENT_USER,
+        payload: { userId: id }
+      });
+    } else {
+      navigate("/login", true);
+    }
+  }
 
   const toggle = () => setIsOpen(!isOpen);
 
   const renderNavBar = () => (
     <Navbar color="white" light expand="md" className="main-navbar-container">
-      <NavbarBrand href="/" className="main-navbar-logo-container">
+      <NavbarBrand
+        onClick={() => navigate("/")}
+        className="main-navbar-logo-container"
+      >
         <Media object bottom src={logo} />
         <span className="text-primary main-navbar-logo">Frozen HR</span>
       </NavbarBrand>
@@ -40,20 +56,25 @@ export const MainNavbar = () => {
       <Collapse isOpen={isOpen} navbar>
         <Nav className="main-navbar-items" navbar>
           <NavItem>
-            <NavLink href="">Parking</NavLink>
+            <NavLink onClick={() => navigate("/main")}>Home</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="">Workplace</NavLink>
+            <NavLink onClick={() => navigate("/parking")}>Parking</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="">Meetings</NavLink>
+            <NavLink onClick={() => navigate("/workplace")}>Workplace</NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink onClick={() => navigate("/meetings")}>Meetings</NavLink>
           </NavItem>
           <UncontrolledDropdown>
             <DropdownToggle nav caret>
               <Media object bottom src={photo} className="main-navbar-photo" />
             </DropdownToggle>
             <DropdownMenu right>
-              <DropdownItem>My Info</DropdownItem>
+              <DropdownItem onClick={() => navigate(`/u/${profile.userId}`)}>
+                My Info
+              </DropdownItem>
               <DropdownItem>Change Password</DropdownItem>
               <DropdownItem divider />
               <DropdownItem>Log Out</DropdownItem>

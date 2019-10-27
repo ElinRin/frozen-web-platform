@@ -37,7 +37,7 @@ export const firebaseTools = {
       }));
   },
 
-  currentUser: () => firebaseAuth.currentUser.uid,
+  currentUser: () => firebaseAuth.currentUser && firebaseAuth.currentUser.uid,
 
   fetchUser: userId =>
     usersFS
@@ -155,7 +155,7 @@ export const firebaseTools = {
         errorCode: error.code,
         errorMessage: error.message
       }));
-  },
+  }
 
   // fetchBirthDayUsers: () => {
   //   const userList = [];

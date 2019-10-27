@@ -16,7 +16,7 @@ export const Login = ({ history }) => {
 
   useEffect(() => {
     if (profile.userId && profile.userId.length) {
-      navigate(`./u/${profile.userId}`);
+      navigate("./main", true);
     }
   }, [history, profile.userId]);
 
