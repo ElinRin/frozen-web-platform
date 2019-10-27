@@ -15,7 +15,8 @@ export const WorkplaceMap = ({listToDisplay}) => {
           <WorkplaceMapSeat
             x={item.x}
             y={item.y}
-            color="#1c7430"
+            color={item.UID === undefined ? '#1c7430' : '#e20074'}
+            uid={item.UID}
             key={`${item.x}${item.y}`}/>)
       }
     </div>
