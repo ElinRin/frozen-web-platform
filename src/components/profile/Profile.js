@@ -1,19 +1,26 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Col, Container, Row, Media, Table } from "reactstrap";
 
 import photo from "../../mocks/photo_example.jpg";
 
 import "./Profile.css";
-import {ProfileContext} from "../../app/Context";
+import {UsersInfoContext} from "../../app/Context";
+import {navigate} from "hookrouter";
+import {fetchUser} from "../../actions/user";
 
-export const Profile = () => {
-  const [profile, profileDispatch] = useContext(ProfileContext);
+export const Profile = ({ userId }) => {
+  const [usersInfo, usersInfoDispatch] = useContext(UsersInfoContext);
 
-  return (
+  const returnEmpty = () => (
+    <Container className="wrapper">
+    </Container>
+  );
+
+  const returnProfile = profile => (
     <Container className="wrapper">
       <Row>
         <Col xs="3">
-          <Media src={photo} className="profile-photo" />
+          <Media src={profile.profileImage} className="profile-photo" />
         </Col>
         <Col xs="8" className="header">
           <h1>{profile.fullName}</h1>
@@ -62,4 +69,13 @@ export const Profile = () => {
       </Row>
     </Container>
   );
-}
+
+  const user = usersInfo[userId];
+  console.log(user);
+  if (typeof user == "undefined") {
+    fetchUser(userId, usersInfoDispatch).catch(error => console.log(error));
+    return returnEmpty();
+  } else {
+    return returnProfile(user);
+  }
+};

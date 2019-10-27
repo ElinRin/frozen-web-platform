@@ -43,10 +43,9 @@ export const currentUser = async dispatch => {
 
 export const fetchUser = async (userId, dispatch) => {
   await firebaseTools.fetchUser(userId).then(userInfo => {
-    console.log({ userInfo, data: userInfo.data });
     return dispatch({
       type: FETCH_USER,
-      payload: userInfo.data
+      payload: { [userId]: userInfo.data() }
     });
   });
 };
@@ -58,11 +57,11 @@ export const changeStatus = async (newStatus, dispatch) => {
 
 export const searchUserByFullName = async (fullName, dispatch) => {
   firebaseTools.searchUserByFullName(fullName).then(userList => {
-    console.log({ userList, data: userList.data });
+    console.log(userList);
 
     dispatch({
       type: SEARCH_USER_BY_FULL_NAME,
-      payload: userList.data
+      payload: { fullNameSearch: userList[0] }
     });
   });
 };

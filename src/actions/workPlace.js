@@ -7,32 +7,46 @@ import {
 } from './types';
 import {firebaseTools} from "../utils/firebase";
 
-export const fetchWorkPlace = async (workPlaceId, dispatch) =>
-  await dispatch({
-    type: FETCH_WORK_PLACE,
-    payload: firebaseTools.fetchWorkPlace(workPlaceId)
-  });
+export const fetchWorkPlace = async (workPlaceId, dispatch) => {
+  await firebaseTools.fetchWorkPlace(workPlaceId).then(workPlaceInfo => {
+    return dispatch({
+      type: FETCH_WORK_PLACE,
+      payload: workPlaceInfo.data()
+    })
+  })
+};
 
-export const fetchWorkPlaceListByFloor = async (floor, dispatch) =>
-  await dispatch({
-    type: FETCH_WORK_PLACE_LIST_BY_FLOOR,
-    payload: firebaseTools.fetchWorkPlaceListByFloor(floor)
-  });
+export const fetchWorkPlaceListByFloor = async (floor, dispatch) => {
+  await firebaseTools.fetchWorkPlaceListByFloor(floor).then(workPlaceList => {
+    return dispatch({
+      type: FETCH_WORK_PLACE_LIST_BY_FLOOR,
+      payload: { workPlaceList: workPlaceList }
+    })
+  })
+};
 
-export const reserveWorkPlace = async (workPlaceId, dispatch) =>
+export const reserveWorkPlace = async (workPlaceId, dispatch) => {
+  await firebaseTools.reserveWorkPlace(workPlaceId);
   await dispatch({
-    type: RESERVE_WORK_PLACE,
-    payload: firebaseTools.reserveWorkPlace(workPlaceId)
-  });
+    type: RESERVE_WORK_PLACE
+  })
+};
 
-export const searchWorkPlaceByUserId = async (userId, dispatch) =>
-  await dispatch({
-    type: SEARCH_WORK_PLACE_BY_USER_ID,
-    payload: firebaseTools.searchWorkPlaceByUserId(userId)
-  });
+export const searchWorkPlaceByUserId = async (userId, dispatch) => {
+  await firebaseTools.searchWorkPlaceByUserId(userId).then(workPlaceInfo => {
+    console.log(workPlaceInfo);
+    return dispatch({
+      type: SEARCH_WORK_PLACE_BY_USER_ID,
+      payload: { userWorkPlace: workPlaceInfo[0]}
+    })
+  })
+};
 
-export const searchWorkPlaceByProperties = async (properties, dispatch) =>
-  await dispatch({
-    type: SEARCH_WORK_PLACE_BY_PROPERTIES,
-    payload: firebaseTools.searchWorkPlaceByProperties(properties)
-  });
+export const searchWorkPlaceByProperties = async (properties, dispatch) => {
+  await firebaseTools.searchWorkPlaceByProperties(properties).then(workPlaceList => {
+    return dispatch({
+      type: SEARCH_WORK_PLACE_BY_PROPERTIES,
+      payload: workPlaceList.data()
+    })
+  })
+};
