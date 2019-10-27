@@ -23,7 +23,6 @@ export const Workplace = () => {
 
   const workPlaceList = workPlaceInfo.workPlaceList || [];
   const [listToDisplay, setListDisplay] = useState(workPlaceList);
-  // console.log(workPlaceInfo);
 
   return (
     <div>

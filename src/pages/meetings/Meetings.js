@@ -1,16 +1,15 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Col, Container, Row } from "reactstrap";
 import { CustomCalendar } from "../../components/calendar/CustomCalendar";
 import { MeetingMap } from "../../components/meeting-map/MeetingMap";
 import { ModalNewEvent } from "../../components/modal-new-event/ModalNewEvent";
 
-import "./Meetings.css"
+import "./Meetings.css";
 
 export const Meetings = () => {
-  const [roomName, setRoomName] = useState('roomName');
-  const openNewEventModal = (roomName) => {
+  const [roomName, setRoomName] = useState("roomName");
+  const openNewEventModal = roomName => {
     setRoomName(roomName);
-    console.log('New event');
   };
 
   return (
@@ -18,8 +17,8 @@ export const Meetings = () => {
       <Row>
         <Col className="meetings-wrapper">
           <div className="meetings-header">
-            <ModalNewEvent/>
-            <h1 style={{textAlign: 'right'}}>Your calendar</h1>
+            <ModalNewEvent />
+            <h1 style={{ textAlign: "right" }}>Your calendar</h1>
           </div>
           <CustomCalendar />
         </Col>
@@ -31,5 +30,5 @@ export const Meetings = () => {
         </Col>
       </Row>
     </Container>
-  )
+  );
 };

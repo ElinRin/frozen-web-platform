@@ -8,7 +8,11 @@ import {
   Form,
   FormGroup,
   Input,
-  Label, InputGroup, InputGroupAddon, ListGroup, ListGroupItem
+  Label,
+  InputGroup,
+  InputGroupAddon,
+  ListGroup,
+  ListGroupItem
 } from "reactstrap";
 
 export const ModalNewEvent = ({ className }) => {
@@ -17,19 +21,16 @@ export const ModalNewEvent = ({ className }) => {
   const toggle = () => {
     setModal(!modal);
   };
-
-  const updMembers = (element) => { return () => setMembers([...members, element]) };
+  const updMembers = element => {
+    return () => setMembers([...members, element]);
+  };
 
   return (
-    <div style={{ float: 'left' }}>
-        <Button color="primary"
-                style={{ float: 'left' }}
-                onClick={toggle}>
-          Add new event
-        </Button>
-      <ModalArea isOpen={modal}
-                 toggle={toggle}
-                 className={className}>
+    <div style={{ float: "left" }}>
+      <Button color="primary" style={{ float: "left" }} onClick={toggle}>
+        Add new event
+      </Button>
+      <ModalArea isOpen={modal} toggle={toggle} className={className}>
         <ModalHeader toggle={toggle}>Add new event</ModalHeader>
         <ModalBody>
           <Form>
@@ -48,18 +49,16 @@ export const ModalNewEvent = ({ className }) => {
             <FormGroup>
               <Label for="eventMembers">Members</Label>
               <InputGroup>
-                <Input placeholder="User search"/>
+                <Input placeholder="User search" />
                 <InputGroupAddon addonType="append">
-                  <Button onClick={updMembers('Ilon Mask')}>Add</Button>
+                  <Button onClick={updMembers("Ilon Mask")}>Add</Button>
                 </InputGroupAddon>
               </InputGroup>
             </FormGroup>
             <ListGroup>
-              {
-                members.map(name => {
-                  return <ListGroupItem>{name}</ListGroupItem>
-                })
-              }
+              {members.map(name => {
+                return <ListGroupItem>{name}</ListGroupItem>;
+              })}
             </ListGroup>
           </Form>
         </ModalBody>

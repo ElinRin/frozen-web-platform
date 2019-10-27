@@ -1,9 +1,7 @@
 :root {
-    --main-border: #e3e3e3 solid 1px;
-    --main-border-radius: 5px;
-
+  --main-border: #e3e3e3 solid 1px;
+  --main-border-radius: 5px;
 }
-
 
 body {
   margin: 0;
@@ -20,20 +18,20 @@ code {
 }
 
 .wrapper {
-    background-color: white;
-    border: var(--main-border);
-    border-radius: var(--main-border-radius);
-    padding: 20px;
+  background-color: white;
+  border: var(--main-border);
+  border-radius: var(--main-border-radius);
+  padding: 20px;
 }
 
 .wrapper-margin {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .wrapper-left {
-    margin-left: 10px;
+  margin-left: 10px;
 }
 
 .wrapper-right {
-    margin-right: 10px;
+  margin-right: 10px;
 }

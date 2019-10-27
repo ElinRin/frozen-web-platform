@@ -1,25 +1,25 @@
-import React, {useState, useContext} from "react";
+import React, { useState, useContext } from "react";
 import { InputGroup, InputGroupAddon, Input } from "reactstrap";
-
 
 import "./WorkplaceSearch.css";
 import Button from "reactstrap/es/Button";
-import {loginUser, searchUserByFullName} from "../../actions/user";
-import {UsersInfoContext, WorkPlaceInfoContext} from "../../app/Context";
-import {searchWorkPlaceByUserId} from "../../actions/workPlace";
+import { searchUserByFullName } from "../../actions/user";
+import { UsersInfoContext, WorkPlaceInfoContext } from "../../app/Context";
+import { searchWorkPlaceByUserId } from "../../actions/workPlace";
 
 export const WorkplaceSearch = ({ setListDisplay }) => {
-
-  const [fullName, setFullName] = useState('');
+  const [fullName, setFullName] = useState("");
   const [usersInfo, usersInfoDispatch] = useContext(UsersInfoContext);
-  const [workPlaceInfo, workPlaceInfoDispatch] = useContext(WorkPlaceInfoContext);
+  const [workPlaceInfo, workPlaceInfoDispatch] = useContext(
+    WorkPlaceInfoContext
+  );
 
   const handleSubmit = async event => {
     event.preventDefault();
     await searchUserByFullName(fullName, usersInfoDispatch);
     const userId = usersInfo.fullNameSearch;
     if (typeof userId == "undefined") {
-      setFullName('');
+      setFullName("");
     } else {
       await searchWorkPlaceByUserId(userId, workPlaceInfoDispatch);
     }
@@ -31,7 +31,7 @@ export const WorkplaceSearch = ({ setListDisplay }) => {
         <Input
           placeholder="Full Name"
           type="text"
-          value = {fullName}
+          value={fullName}
           onChange={({ currentTarget: { value } }) => setFullName(value)}
         />
         <InputGroupAddon addonType="append">
@@ -39,5 +39,5 @@ export const WorkplaceSearch = ({ setListDisplay }) => {
         </InputGroupAddon>
       </InputGroup>
     </div>
-  )
+  );
 };

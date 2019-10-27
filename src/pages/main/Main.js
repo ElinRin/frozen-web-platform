@@ -3,11 +3,9 @@ import { Col, Container, Row, Media, Button } from "reactstrap";
 import { DaysOffLayout } from "../../components/daysoff-layout/DaysOffLayout";
 import { BirthdaysLayout } from "../../components/birthdays-layout/BirthdaysLayout";
 import { NewsLayout } from "../../components/news-layout/NewsLayout";
-
-import photo from "../../mocks/photo_example.jpg";
-import "./Main.css";
 import { changeStatus, fetchMe } from "../../actions/user";
 import { ProfileContext } from "../../app/Context";
+import "./Main.css";
 
 export const Main = () => {
   const [profile, profileDispatch] = useContext(ProfileContext);

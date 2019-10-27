@@ -73,7 +73,6 @@ export const Profile = ({ userId }) => {
     </Container>
   );
 
-
   if (typeof user === "undefined") {
     fetchUser(userId, usersInfoDispatch).catch(error => console.log(error));
     return returnEmpty();

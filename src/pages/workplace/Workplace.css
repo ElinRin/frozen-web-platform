@@ -1,26 +1,26 @@
 .workplace-filter-wrapper {
-    padding: 20px;
-    overflow: auto;
+  padding: 20px;
+  overflow: auto;
 }
 
 .workplace-vertical-divs {
-    margin: 5%;
-    width:90%;
+  margin: 5%;
+  width: 90%;
 }
 
 .workplace-down-row {
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
 }
 
 .workplace-left-column {
-    width: 29%;
-    margin-right: 2%
+  width: 29%;
+  margin-right: 2%;
 }
 
 .workplace-right-column {
-    width: 69%;
-    margin-left: 2%;
-    overflow-y: hidden;
+  width: 69%;
+  margin-left: 2%;
+  overflow-y: hidden;
 }

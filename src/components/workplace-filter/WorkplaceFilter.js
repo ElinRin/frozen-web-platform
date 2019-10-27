@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { ThreeStageToggle } from "..";
 
 import "./WorkplaceFilter.css";
@@ -19,7 +19,7 @@ export const WorkplaceFilter = ({ workPlaceList, setListDisplay }) => {
     doFilter();
   };
 
-  const doFilter = () => {
+  const doFilter = useCallback(() => {
     const oldParams = params;
     const filteredParams = oldParams.filter(param => param.value !== null);
     const newValues = filteredParams.reduce((newValues, parameter) => {
@@ -27,7 +27,7 @@ export const WorkplaceFilter = ({ workPlaceList, setListDisplay }) => {
     }, workPlaceList);
 
     setListDisplay(newValues);
-  };
+  }, [params, setListDisplay, workPlaceList]);
 
   return (
     <div className="wrapper">
