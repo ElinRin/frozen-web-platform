@@ -1,6 +1,6 @@
 import {
   FETCH_PARKING,
-  FETCH_PARKING_LIST_BY_FLOOR,
+  FETCH_PARKING_LIST,
   RESERVE_PARKING
 } from './types';
 import {firebaseTools} from "../utils/firebase";
@@ -11,10 +11,10 @@ export const fetchParking = async (parkingId, dispatch) =>
     payload: firebaseTools.fetchParking(parkingId)
   });
 
-export const fetchParkingListByFloor = async (floor, dispatch) =>
+export const fetchParkingList = async (dispatch) =>
   await dispatch({
-    type: FETCH_PARKING_LIST_BY_FLOOR,
-    payload: firebaseTools.fetchParkingListByFloor(floor)
+    type: FETCH_PARKING_LIST,
+    payload: firebaseTools.fetchParkingList()
   });
 
 export const reserveParking = async (parkingId, dispatch) =>

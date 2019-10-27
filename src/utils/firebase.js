@@ -141,11 +141,14 @@ export const firebaseTools = {
         errorMessage: error.message
       })),
 
-  fetchParkingListByFloor: floor =>
+  fetchParkingList: () =>
     parkingFS
-      .where("floor", "==", floor)
       .get()
-      .then(parkingList => parkingList)
+      .then(parkingList => {
+        let data = parkingList.docs.map(a => a.data())
+        console.log(data);
+        return data;
+      })
       .catch(error => ({
         errorCode: error.code,
         errorMessage: error.message

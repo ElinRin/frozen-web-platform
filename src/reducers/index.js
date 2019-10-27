@@ -7,7 +7,7 @@ import {
   FETCH_WORK_PLACE_LIST_BY_FLOOR,
   RESERVE_WORK_PLACE,
   FETCH_PARKING,
-  FETCH_PARKING_LIST_BY_FLOOR,
+  FETCH_PARKING_LIST,
   RESERVE_PARKING,
   FETCH_BIRTHDAY_USERS,
   SEARCH_USER_BY_FULL_NAME,
@@ -82,8 +82,8 @@ export const parking = (state = null, action) => {
     case FETCH_PARKING:
       return { ...state, ...action.payload };
 
-    case FETCH_PARKING_LIST_BY_FLOOR:
-      return { ...state, ...action.payload };
+    case FETCH_PARKING_LIST:
+      return { ...state, ...action.payload};
 
     case RESERVE_PARKING:
       return { ...state, ...action.payload };
