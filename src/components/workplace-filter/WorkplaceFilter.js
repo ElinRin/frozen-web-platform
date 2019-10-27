@@ -1,6 +1,6 @@
-import React, {useState, useContext, useEffect} from "react";
-import {Col, Container, Row, Media, Table, InputGroup, InputGroupAddon, Input} from "reactstrap";
-import {ThreeStageToggle, WorkplaceMap} from "..";
+import React, {useState} from "react";
+import {Col, Container, Row} from "reactstrap";
+import {ThreeStageToggle} from "..";
 
 
 import "./WorkplaceFilter.css";
