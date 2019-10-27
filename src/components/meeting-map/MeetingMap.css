@@ -1,0 +1,17 @@
+.m_map {
+    position: relative;
+    overflow-x: scroll;
+}
+
+.map-image {
+
+}
+
+.plus-svg {
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+
+    left: 20rem;
+    bottom: 26rem;
+}
