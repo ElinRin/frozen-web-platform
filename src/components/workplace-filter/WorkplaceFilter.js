@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Col, Container, Row } from "reactstrap";
 import { ThreeStageToggle } from "..";
 
 import "./WorkplaceFilter.css";
@@ -31,7 +30,7 @@ export const WorkplaceFilter = ({ workPlaceList, setListDisplay }) => {
   };
 
   return (
-    <div>
+    <div className="wrapper">
       {params.map((value, index) => (
         <div key={index} className="mt-4">
           <ThreeStageToggle

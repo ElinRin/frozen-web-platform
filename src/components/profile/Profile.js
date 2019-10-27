@@ -18,10 +18,10 @@ export const Profile = ({ userId }) => {
     }
   }, [user, userId, usersInfo]);
 
-  const returnEmpty = () => <Container className="wrapper"></Container>;
+  const returnEmpty = () => <Container className="wrapper wrapper-margin"></Container>;
 
   const returnProfile = profile => (
-    <Container className="wrapper">
+    <Container className="profile-wrapper">
       <div className="main-info">
         <Media src={profile.profileImage} className="profile-photo" />
 

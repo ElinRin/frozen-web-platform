@@ -4,7 +4,7 @@ import { ParkingWidget } from '../../components/parking/ParkingWidget'
 import "./Parking.css";
 export const Parking = () => (
   <div className="parking-container">
-    <Container className="wrapper">
+    <Container className="wrapper wrapper-margin">
       <h1>Parking</h1>
       <p>Please choose free place to park your auto.</p>
       <ParkingWidget/>

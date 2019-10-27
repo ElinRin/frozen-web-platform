@@ -23,6 +23,17 @@ code {
     background-color: white;
     border: var(--main-border);
     border-radius: var(--main-border-radius);
-    margin-top: 20px;
     padding: 20px;
+}
+
+.wrapper-margin {
+    margin-top: 20px;
+}
+
+.wrapper-left {
+    margin-left: 10px;
+}
+
+.wrapper-right {
+    margin-right: 10px;
 }

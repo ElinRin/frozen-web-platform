@@ -1,5 +1,5 @@
 import React, {useState, useContext} from "react";
-import { Col, Container, Row, InputGroup, InputGroupAddon, Input } from "reactstrap";
+import { InputGroup, InputGroupAddon, Input } from "reactstrap";
 
 
 import "./WorkplaceSearch.css";
@@ -26,22 +26,18 @@ export const WorkplaceSearch = ({ setListDisplay }) => {
   };
 
   return (
-    <Container className="wrapper search-container">
-      <Row>
-        <Col>
-          <InputGroup>
-            <Input
-              placeholder="Full Name"
-              type="text"
-              value = {fullName}
-              onChange={({ currentTarget: { value } }) => setFullName(value)}
-            />
-            <InputGroupAddon addonType="append">
-              <Button onClick={handleSubmit}>Search</Button>
-            </InputGroupAddon>
-          </InputGroup>
-        </Col>
-      </Row>
-    </Container>
+    <div className="wrapper">
+      <InputGroup>
+        <Input
+          placeholder="Full Name"
+          type="text"
+          value = {fullName}
+          onChange={({ currentTarget: { value } }) => setFullName(value)}
+        />
+        <InputGroupAddon addonType="append">
+          <Button onClick={handleSubmit}>Search</Button>
+        </InputGroupAddon>
+      </InputGroup>
+    </div>
   )
 };
