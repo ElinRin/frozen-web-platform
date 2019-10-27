@@ -1,14 +1,61 @@
 .profile-photo {
-  width: 256px;
-  height: 256px;
   border-radius: 50%;
+}
+
+@media (min-width: 768px), (max-width: 768px) {
+  .profile-photo {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+@media (min-width: 769px) {
+  .profile-photo {
+    width: 128px;
+    height: 128px;
+  }
+}
+
+.wrapper {
+  background-color: white;
+  border: var(--main-border);
+  border-radius: var(--main-border-radius);
+  margin-top: 50px;
+  padding: 20px;
 }
 
 .header {
   align-items: center;
   padding-top: 20px;
+  padding-left: 20px;
 }
 
 .info {
   padding-top: 20px;
+}
+
+.main-info {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+@media (min-width: 768px), (max-width: 768px) {
+  .header h1 {
+    font-size: 18px;
+  }
+
+  .header h2 {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 769px) {
+  .header h1 {
+    font-size: 32px;
+  }
+
+  .header h2 {
+    font-size: 24px;
+  }
 }

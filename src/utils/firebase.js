@@ -26,11 +26,13 @@ export const firebaseTools = {
     })),
 
   fetchMe: () => {
-    const userId = firebaseAuth.currentUser.uid;
+    const userId = firebaseAuth.currentUser && firebaseAuth.currentUser.uid;
     return usersFS
       .doc(userId)
       .get()
-      .then(profile => ({ userId, ...profile.data() }))
+      .then(profile => {
+        return { userId, ...profile.data() };
+      })
       .catch(error => ({
         errorCode: error.code,
         errorMessage: error.message
@@ -50,7 +52,7 @@ export const firebaseTools = {
       })),
 
   changeStatus: newStatus => {
-    const userId = firebaseAuth.currentUser.uid;
+    const userId = firebaseAuth.currentUser && firebaseAuth.currentUser.uid;
     usersFS
       .doc(userId)
       .update({
@@ -93,7 +95,7 @@ export const firebaseTools = {
       })),
 
   reserveWorkPlace: workPlaceId => {
-    const userId = firebaseAuth.currentUser.uid;
+    const userId = firebaseAuth.currentUser && firebaseAuth.currentUser.uid;
     workPlacesFS
       .doc(workPlaceId)
       .update({
@@ -150,7 +152,7 @@ export const firebaseTools = {
       })),
 
   reserveParking: parkingId => {
-    const userId = firebaseAuth.currentUser.uid;
+    const userId = firebaseAuth.currentUser && firebaseAuth.currentUser.uid;
     parkingFS
       .doc(parkingId)
       .update({

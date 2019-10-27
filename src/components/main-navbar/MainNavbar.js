@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { navigate, usePath } from "hookrouter";
 import {
   Collapse,
@@ -15,34 +15,40 @@ import {
   DropdownItem
 } from "reactstrap";
 import logo from "../../images/frozen32.png";
-import photo from "../../mocks/photo_example.jpg";
 import { ProfileContext } from "../../app/Context";
+import { logoutUser, fetchMe } from "../../actions/user";
 import { firebaseTools } from "../../utils/firebase";
 import { CURRENT_USER } from "../../actions/types";
 import "./MainNavbar.css";
-import {logoutUser} from "../../actions/user";
 
 export const MainNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [profile, profileDispatch] = useContext(ProfileContext);
   const path = usePath();
-
-  console.log({ profile, path });
+  const toggle = () => setIsOpen(!isOpen);
 
   if (path !== "/login" && !(profile.userId && profile.userId.length)) {
     const id = firebaseTools.currentUser();
-    console.log({ id });
     if (id && id.length) {
       profileDispatch({
         type: CURRENT_USER,
         payload: { userId: id }
       });
+      fetchMe(profileDispatch).catch(error => console.log(error));
     } else {
       navigate("/login", true);
     }
   }
 
-  const toggle = () => setIsOpen(!isOpen);
+  useEffect(() => {
+    if (
+      path !== "/login" &&
+      profile.userId &&
+      typeof profile.profileImage === "undefined"
+    ) {
+      fetchMe(profileDispatch).catch(error => console.log(error));
+    }
+  }, [path, profile, profile.userId, profileDispatch]);
 
   const renderNavBar = () => (
     <Navbar color="white" light expand="md" className="main-navbar-container">
@@ -57,7 +63,7 @@ export const MainNavbar = () => {
       <Collapse isOpen={isOpen} navbar>
         <Nav className="main-navbar-items" navbar>
           <NavItem>
-            <NavLink onClick={() => navigate("/main")}>Home</NavLink>
+            <NavLink onClick={() => navigate("/main")}>Main</NavLink>
           </NavItem>
           <NavItem>
             <NavLink onClick={() => navigate("/parking")}>Parking</NavLink>
@@ -70,7 +76,12 @@ export const MainNavbar = () => {
           </NavItem>
           <UncontrolledDropdown>
             <DropdownToggle nav caret>
-              <Media object bottom src={photo} className="main-navbar-photo" />
+              <Media
+                object
+                bottom
+                src={profile.profileImage}
+                className="main-navbar-photo"
+              />
             </DropdownToggle>
             <DropdownMenu right>
               <DropdownItem onClick={() => navigate(`/u/${profile.userId}`)}>
@@ -88,6 +99,5 @@ export const MainNavbar = () => {
     </Navbar>
   );
 
-  console.log({ profile });
   return <>{profile.userId && renderNavBar()} </>;
 };

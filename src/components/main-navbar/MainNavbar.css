@@ -1,5 +1,6 @@
 .main-navbar-container {
   min-height: 5vh;
+  margin-bottom: 1vh;
   border-bottom: var(--main-border);
   border-radius: var(--main-border-radius);
 }

@@ -4216,16 +4216,21 @@ input[type="button"].btn-block {
 }
 
 .navbar-toggler {
+    right: 0;
+    position: absolute;
+    margin-right: 2vh;
     padding: 0.25rem 0.75rem;
     font-size: 1.25rem;
     line-height: 1;
     background-color: transparent;
     border: 1px solid transparent;
     border-radius: 0.25rem;
+    outline: none;
 }
 
 .navbar-toggler:hover, .navbar-toggler:focus {
     text-decoration: none;
+    outline: none;
 }
 
 .navbar-toggler-icon {
@@ -4484,7 +4489,6 @@ input[type="button"].btn-block {
 
 .navbar-light .navbar-toggler {
     color: rgba(0, 0, 0, 0.5);
-    border-color: rgba(0, 0, 0, 0.1);
 }
 
 .navbar-light .navbar-toggler-icon {
