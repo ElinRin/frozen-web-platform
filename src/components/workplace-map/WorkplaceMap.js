@@ -12,12 +12,12 @@ export const WorkplaceMap = ({ listToDisplay }) => {
         <img className="map-image" src={map} alt="" />
         {listToDisplay.map((item, i) => (
           <WorkplaceMapSeat
+            id={item.id}
             x={item.x}
             y={item.y}
-            color={item.UID === undefined ? "#1c7430" : "#e20074"}
-            uid={item.UID}
-            key={`${item.x}${item.y}`}
-          />
+            color={item.userId === undefined ? '#1c7430' : '#e20074'}
+            uid={item.userId}
+            key={`${item.x}${item.y}`}/>
         ))}
       </div>
     </div>
