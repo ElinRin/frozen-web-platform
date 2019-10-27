@@ -23,7 +23,6 @@ export const ThreeStageToggle = ({ index, name, updateValue }) => {
   };
 
   return (
-    <>
       <div className="grid-container">
         <div className="label">
           <p className="label-text">{name}</p>
@@ -74,6 +73,5 @@ export const ThreeStageToggle = ({ index, name, updateValue }) => {
           <div className={`switcher-slider st_${inputValue}`}></div>
         </div>
       </div>
-    </>
   );
 };

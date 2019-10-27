@@ -24,3 +24,9 @@
   margin-left: 2%;
   overflow-y: hidden;
 }
+
+@media (min-width: 150px) {
+  .workplace-left-column {
+    overflow: auto;
+  }
+}
