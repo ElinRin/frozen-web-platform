@@ -16,8 +16,8 @@ export const Login = ({history}) => {
 
   const testLogin = async () => {
     await loginUser({
-      email: 'hradmin@telekom.com',
-      password: 'hradmin'
+      email: 'guest@telekom.com',
+      password: 'guest1'
     }, profileDispatch);
   };
 
