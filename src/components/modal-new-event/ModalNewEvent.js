@@ -14,16 +14,22 @@ import {
 export const ModalNewEvent = ({ className }) => {
   const [modal, setModal] = useState(false);
   const [members, setMembers] = useState([]);
+  const toggle = () => {
+    setModal(!modal);
+  };
 
-  const toggle = () => setModal(!modal);
   const updMembers = (element) => { return () => setMembers([...members, element]) };
 
   return (
     <div style={{ float: 'left' }}>
-        <Button color="primary" style={{ float: 'left' }} onClick={toggle}>
+        <Button color="primary"
+                style={{ float: 'left' }}
+                onClick={toggle}>
           Add new event
         </Button>
-      <ModalArea isOpen={modal} toggle={toggle} className={className}>
+      <ModalArea isOpen={modal}
+                 toggle={toggle}
+                 className={className}>
         <ModalHeader toggle={toggle}>Add new event</ModalHeader>
         <ModalBody>
           <Form>
