@@ -20,6 +20,7 @@ import { ProfileContext } from "../../app/Context";
 import { firebaseTools } from "../../utils/firebase";
 import { CURRENT_USER } from "../../actions/types";
 import "./MainNavbar.css";
+import {logoutUser} from "../../actions/user";
 
 export const MainNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -77,7 +78,9 @@ export const MainNavbar = () => {
               </DropdownItem>
               <DropdownItem>Change Password</DropdownItem>
               <DropdownItem divider />
-              <DropdownItem>Log Out</DropdownItem>
+              <DropdownItem onClick={() => logoutUser(profileDispatch)}>
+                Log Out
+              </DropdownItem>
             </DropdownMenu>
           </UncontrolledDropdown>
         </Nav>
