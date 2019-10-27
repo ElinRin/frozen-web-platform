@@ -88,7 +88,7 @@ export const firebaseTools = {
     workPlacesFS
       .where("floor", "==", floor)
       .get()
-      .then(workPlaceList => workPlaceList.docs.map(a => a.data()))
+      .then(workPlaceList => workPlaceList.docs.map(a => ({id: a.id, ...a.data()})))
       .catch(error => ({
         errorCode: error.code,
         errorMessage: error.message
@@ -96,6 +96,7 @@ export const firebaseTools = {
 
   reserveWorkPlace: workPlaceId => {
     const userId = firebaseAuth.currentUser && firebaseAuth.currentUser.uid;
+    // console.log(userId);
     workPlacesFS
       .doc(workPlaceId)
       .update({

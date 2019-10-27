@@ -1,16 +1,38 @@
-import React, { useState } from "react";
+import React, {useState, useContext} from "react";
 import "./WorkplaceMapSeat.css";
 import {
   Button,
+  Col,
+  Form,
+  FormGroup,
+  Input,
+  InputGroup,
+  InputGroupAddon,
+  Label,
+  ListGroup,
+  ListGroupItem,
+  Media,
   Modal as ModalArea,
+  Row,
   ModalBody,
   ModalFooter,
   ModalHeader
 } from "reactstrap";
+import {UsersInfoContext, WorkPlaceInfoContext} from "../../app/Context";
+import {changeStatus, fetchUser} from "../../actions/user";
+import {navigate} from "hookrouter";
+import {reserveWorkPlace} from "../../actions/workPlace";
 
-export const WorkplaceMapSeat = ({ x, y, color, uid }) => {
+
+export const WorkplaceMapSeat = ({id, x, y, color, uid}) => {
   const [modal, setModal] = useState(false);
   const [modal2, setModal2] = useState(false);
+  const [usersInfo, usersInfoDispatch] = useContext(UsersInfoContext);
+  const [workPlaceInfo, workPlaceInfoDispatch] = useContext(WorkPlaceInfoContext);
+
+  if (uid) {
+    fetchUser(uid, usersInfoDispatch);
+  }
 
   const toggle = () => {
     if (uid) {
@@ -28,10 +50,18 @@ export const WorkplaceMapSeat = ({ x, y, color, uid }) => {
         className="seat"
       ></div>
 
-      <ModalArea isOpen={modal} toggle={toggle} className="">
-        <ModalHeader toggle={toggle}>Employee name</ModalHeader>
-        <ModalBody>
-          <h4>{uid}</h4>
+      <ModalArea isOpen={modal}
+                 toggle={toggle}
+                 className="">
+        <ModalHeader toggle={toggle}>This work place is not free</ModalHeader>
+        <ModalBody onClick={() => navigate(`/u/${uid}`)}>
+          <Col>
+            <Media src={(typeof usersInfo[uid] !== "undefined") ? usersInfo[uid].profileImage : ''} className="profile-photo-small" />
+          </Col>
+          <Col>
+            <h3>{(typeof usersInfo[uid] !== "undefined") ? usersInfo[uid].fullName : ''}</h3>
+            <h4>{(typeof usersInfo[uid] !== "undefined") ? usersInfo[uid].status : ''}</h4>
+          </Col>
         </ModalBody>
         <ModalFooter>
           <Button color="secondary" onClick={toggle}>
@@ -40,16 +70,23 @@ export const WorkplaceMapSeat = ({ x, y, color, uid }) => {
         </ModalFooter>
       </ModalArea>
 
-      <ModalArea isOpen={modal2} toggle={toggle} className="">
-        <ModalHeader toggle={toggle}>Employee name</ModalHeader>
+      <ModalArea isOpen={modal2}
+                 toggle={toggle}
+                 className="">
+        <ModalHeader toggle={toggle}>This work place is free</ModalHeader>
         <ModalBody>
-          <h2>Free!</h2>
+          <h2>
+            You can sit here.
+          </h2>
         </ModalBody>
         <ModalFooter>
           <Button color="secondary" onClick={toggle}>
             Cancel
           </Button>
-          <Button color="success" onClick={toggle}>
+          <Button color="primary" onClick={() => {
+            reserveWorkPlace(id, workPlaceInfoDispatch);
+            toggle();
+          }}>
             Sit here
           </Button>
         </ModalFooter>
@@ -57,3 +94,5 @@ export const WorkplaceMapSeat = ({ x, y, color, uid }) => {
     </>
   );
 };
+
+
