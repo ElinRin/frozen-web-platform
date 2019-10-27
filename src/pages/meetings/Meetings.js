@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { Col, Container, Row } from "reactstrap";
-import { CustomCalendar } from "../../components/calendar/CustomCalendar";
-import { MeetingMap } from "../../components/meeting-map/MeetingMap";
-import { ModalNewEvent } from "../../components/modal-new-event/ModalNewEvent";
+import { CustomCalendar, MeetingMap, ModalNewEvent } from "../../components";
 
 import "./Meetings.css";
 

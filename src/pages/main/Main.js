@@ -1,8 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Col, Container, Row, Media, Button } from "reactstrap";
-import { DaysOffLayout } from "../../components/daysoff-layout/DaysOffLayout";
-import { BirthdaysLayout } from "../../components/birthdays-layout/BirthdaysLayout";
-import { NewsLayout } from "../../components/news-layout/NewsLayout";
+import { DaysOffLayout, BirthdaysLayout, NewsLayout } from "../../components";
 import { changeStatus, fetchMe } from "../../actions/user";
 import { ProfileContext } from "../../app/Context";
 import "./Main.css";

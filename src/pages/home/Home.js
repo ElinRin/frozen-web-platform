@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Profile } from "../../components/profile/Profile";
+import { Profile } from "../../components";
 
 export const Home = ({ userId }) => (
   <div className="home-container">
