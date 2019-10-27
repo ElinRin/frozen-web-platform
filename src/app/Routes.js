@@ -2,7 +2,7 @@ import React from "react";
 import { useRoutes } from "hookrouter";
 import { BrowserRouter as Router } from "react-router-dom";
 
-import { Login, Home, Main, Workplace, Parking } from "../pages";
+import { Login, Home, Main, Workplace, Parking, Meetings } from "../pages";
 import { MainNavbar, NoPageFound } from "../components";
 
 import "./App.css";
@@ -13,7 +13,8 @@ const routes = {
   "/main": () => <Main />,
   "/u/:id": ({ id }) => <Home userId={id} />,
   "/workplace": () => <Workplace />,
-  "/parking": () => <Parking />
+  "/parking": () => <Parking />,
+  "/meetings": () => <Meetings />
 };
 
 export const Routes = () => {

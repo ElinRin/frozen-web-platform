@@ -1,4 +1,4 @@
-.modal-button {
+.modal-time-off-button {
     border: var(--main-border);
     border-radius: var(--main-border-radius);
     color: rgba(56, 56, 56, 1);
@@ -8,11 +8,11 @@
     text-align: center;
 }
 
-.modal-button:hover, .modal-button:focus {
+.modal-time-off-button:hover, .modal-time-off-button:focus {
     color: #e20074;
     background-color: rgba(237, 237, 237, 0.6);
 }
 
-.modal-button:active{
+.modal-time-off-button:active{
     background-color: rgba(237, 237, 237, 1);
 }
