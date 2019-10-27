@@ -96,7 +96,6 @@ export const firebaseTools = {
 
   reserveWorkPlace: workPlaceId => {
     const userId = firebaseAuth.currentUser && firebaseAuth.currentUser.uid;
-    // console.log(userId);
     workPlacesFS
       .doc(workPlaceId)
       .update({
@@ -152,7 +151,6 @@ export const firebaseTools = {
           res.id = a.id;
           return res;
         });
-        console.log(data);
         return data;
       })
       .catch(error => ({

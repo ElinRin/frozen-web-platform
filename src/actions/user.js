@@ -57,7 +57,6 @@ export const changeStatus = async (newStatus, dispatch) => {
 
 export const searchUserByFullName = async (fullName, dispatch) => {
   firebaseTools.searchUserByFullName(fullName).then(userList => {
-    console.log(userList);
 
     dispatch({
       type: SEARCH_USER_BY_FULL_NAME,

@@ -13,6 +13,7 @@ import { UsersInfoContext, WorkPlaceInfoContext } from "../../app/Context";
 import { fetchUser } from "../../actions/user";
 import { navigate } from "hookrouter";
 import { reserveWorkPlace } from "../../actions/workPlace";
+import { firebaseTools } from "../../utils/firebase";
 
 export const WorkplaceMapSeat = ({ id, x, y, color, uid }) => {
   const [modal, setModal] = useState(false);
@@ -89,7 +90,8 @@ export const WorkplaceMapSeat = ({ id, x, y, color, uid }) => {
           <Button
             color="primary"
             onClick={() => {
-              if (uid !== '0qryX4FCS7XRZ2tRq10AHt9xVUB2') {
+              const userId = firebaseTools.currentUser();
+              if (userId !== "0qryX4FCS7XRZ2tRq10AHt9xVUB2") {
                 reserveWorkPlace(id, workPlaceInfoDispatch);
               }
               setModal2(!modal2);

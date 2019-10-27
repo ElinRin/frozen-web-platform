@@ -12,7 +12,6 @@ export const MeetingMap = ({ openModal }) => {
   const [room, setRoom] = useState("");
   const toggle = e => {
     setModal(!modal);
-    console.log(e.target.id);
     setRoom(e.target.id);
   };
   const newEvent = e => {
