@@ -145,7 +145,7 @@ export const firebaseTools = {
     parkingFS
       .get()
       .then(parkingList => {
-        let data = parkingList.docs.map(a => a.data())
+        let data = parkingList.docs.map(a => a.data());
         console.log(data);
         return data;
       })
