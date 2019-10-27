@@ -20,7 +20,7 @@ export const fetchWorkPlaceListByFloor = async (floor, dispatch) => {
   await firebaseTools.fetchWorkPlaceListByFloor(floor).then(workPlaceList => {
     return dispatch({
       type: FETCH_WORK_PLACE_LIST_BY_FLOOR,
-      payload: workPlaceList.data()
+      payload: { workPlaceList: workPlaceList }
     })
   })
 };
@@ -34,9 +34,10 @@ export const reserveWorkPlace = async (workPlaceId, dispatch) => {
 
 export const searchWorkPlaceByUserId = async (userId, dispatch) => {
   await firebaseTools.searchWorkPlaceByUserId(userId).then(workPlaceInfo => {
+    console.log(workPlaceInfo);
     return dispatch({
       type: SEARCH_WORK_PLACE_BY_USER_ID,
-      payload: workPlaceInfo.data()
+      payload: { userWorkPlace: workPlaceInfo[0]}
     })
   })
 };

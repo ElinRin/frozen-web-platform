@@ -66,7 +66,7 @@ export const firebaseTools = {
     usersFS
       .where("fullName", "==", fullName)
       .get()
-      .then(userList => userList)
+      .then(userList => userList.docs.map(a => a.data()))
       .catch(error => ({
         errorCode: error.code,
         errorMessage: error.message
@@ -76,7 +76,7 @@ export const firebaseTools = {
     workPlacesFS
       .doc(workPlaceId)
       .get()
-      .then(workPlaceInfo => workPlaceInfo)
+      .then(workPlaceInfo => workPlaceInfo.data())
       .catch(error => ({
         errorCode: error.code,
         errorMessage: error.message
@@ -86,7 +86,7 @@ export const firebaseTools = {
     workPlacesFS
       .where("floor", "==", floor)
       .get()
-      .then(workPlaceList => workPlaceList)
+      .then(workPlaceList => workPlaceList.docs.map(a => a.data()))
       .catch(error => ({
         errorCode: error.code,
         errorMessage: error.message
@@ -105,10 +105,15 @@ export const firebaseTools = {
       }));
   },
 
-  searchWorkPlaceByUserId: userId => {
-    const workPlaceList = workPlacesFS.where("userId", "==", userId).get();
-    return workPlaceList[0];
-  },
+  searchWorkPlaceByUserId: userId =>
+    workPlacesFS
+      .where("userId", "==", userId)
+      .get()
+      .then(userList => userList.docs.map(a => a.data()))
+      .catch(error => ({
+        errorCode: error.code,
+        errorMessage: error.message
+      })),
 
   searchWorkPlaceByProperties: properties => {
     let wp = workPlacesFS;
