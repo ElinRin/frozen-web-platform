@@ -14,6 +14,10 @@ export const Workplace = () => {
   const [workPlaceInfo, workPlaceInfoDispatch] = useContext(
     WorkPlaceInfoContext
   );
+  const [listToDisplay, setListDisplay] = useState(
+    workPlaceInfo.workPlaceList || []
+  );
+
   useEffect(() => {
     async function fetchData() {
       await fetchWorkPlaceListByFloor(0, workPlaceInfoDispatch);
@@ -21,8 +25,9 @@ export const Workplace = () => {
     fetchData();
   }, [workPlaceInfoDispatch]);
 
-  const workPlaceList = workPlaceInfo.workPlaceList || [];
-  const [listToDisplay, setListDisplay] = useState(workPlaceList);
+  useEffect(() => {
+    setListDisplay(workPlaceInfo.workPlaceList || []);
+  }, [workPlaceInfo]);
 
   return (
     <div>
@@ -33,7 +38,7 @@ export const Workplace = () => {
         <div className="workplace-left-column">
           <WorkplaceFilter
             setListDisplay={setListDisplay}
-            workPlaceList={workPlaceList}
+            workPlaceList={workPlaceInfo.workPlaceList || []}
           />
         </div>
         <div className="workplace-right-column">
