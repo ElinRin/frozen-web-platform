@@ -9,8 +9,13 @@ import "./MeetingMap.css";
 
 export const MeetingMap = ({ openModal }) => {
   const [modal, setModal] = useState(false);
-  const toggle = () => setModal(!modal);
-  const newEvent = () => {
+  const [room, setRoom] = useState("");
+  const toggle = e => {
+    setModal(!modal);
+    console.log(e.target.id);
+    setRoom(e.target.id);
+  };
+  const newEvent = e => {
     toggle();
   };
 
@@ -18,7 +23,24 @@ export const MeetingMap = ({ openModal }) => {
     <>
       <div className="m_map">
         <img className="map-image" src={map} alt="" />
-        <img className="plus-svg" onClick={toggle} src={plus} alt=""></img>
+        {/*left: 20rem;
+    bottom: 26rem;*/}
+        <img
+          className="plus-svg"
+          id="Room 1"
+          style={{ left: "8rem", bottom: "21rem" }}
+          onClick={toggle}
+          src={plus}
+          alt=""
+        ></img>
+        <img
+          className="plus-svg"
+          id="Room 2"
+          style={{ left: "7rem", bottom: "9rem" }}
+          onClick={toggle}
+          src={plus}
+          alt=""
+        />
       </div>
 
       <Modal isOpen={modal} fade={false} toggle={toggle} className="">
@@ -29,7 +51,7 @@ export const MeetingMap = ({ openModal }) => {
           14.30 - 15.00 - Table football.
         </ModalBody>
         <ModalFooter>
-          <ModalNewEvent closePrevModal={newEvent} />
+          <ModalNewEvent room={room} closePrevModal={newEvent} />
           <Button color="secondary" onClick={toggle}>
             Cancel
           </Button>

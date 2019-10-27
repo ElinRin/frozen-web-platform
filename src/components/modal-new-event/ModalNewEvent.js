@@ -12,17 +12,33 @@ import {
   InputGroup,
   InputGroupAddon,
   ListGroup,
-  ListGroupItem
+  ListGroupItem,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem
 } from "reactstrap";
 
-export const ModalNewEvent = ({ className }) => {
+import "./ModalNewEvent.css";
+
+export const ModalNewEvent = ({ className, room }) => {
   const [modal, setModal] = useState(false);
   const [members, setMembers] = useState([]);
-  const toggle = () => {
-    setModal(!modal);
-  };
+  const [selectedRoom, setSelectedRoom] = useState(room);
+
+  const toggle = () => setModal(!modal);
+
   const updMembers = element => {
     return () => setMembers([...members, element]);
+  };
+
+  const setSuggestedRoom = () => {
+    setSelectedRoom("Room 2 ");
+  };
+
+  const changeValue = e => {
+    setSelectedRoom(e.target.innerText);
+    console.log(e.target.innerText);
   };
 
   return (
@@ -61,6 +77,27 @@ export const ModalNewEvent = ({ className }) => {
               })}
             </ListGroup>
           </Form>
+          <div className="grid-wrapper">
+            <div>
+              <UncontrolledDropdown>
+                <DropdownToggle caret>{selectedRoom}</DropdownToggle>
+                <DropdownMenu>
+                  <DropdownItem header>First floor</DropdownItem>
+                  <DropdownItem divider />
+                  <DropdownItem onClick={changeValue} dropDownValue="room1">
+                    Room 1{" "}
+                  </DropdownItem>
+                  <DropdownItem onClick={changeValue} dropDownValue="room2">
+                    Room 2{" "}
+                  </DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
+            </div>
+
+            <Button onClick={setSuggestedRoom} color="primary">
+              Suggest
+            </Button>
+          </div>
         </ModalBody>
         <ModalFooter>
           <Button color="primary" onClick={toggle}>
