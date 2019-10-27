@@ -1,23 +1,13 @@
 import React, { useState, useContext, useEffect } from "react";
 import "./ParkingWidget.css";
-import { fetchParkingList } from "../../actions/parking";
+import { fetchParkingList, reserveParking } from "../../actions/parking";
 import { ParkingInfoContext } from "../../app/Context";
+import { firebaseTools } from "../../utils/firebase";
 
-let state = [
-  { num: 1, uid: "me" },
-  { num: 2, uid: "hello" },
-  { num: 3, uid: "hello" },
-  { num: 4 }
-];
-
-function setMyPlace(index) {
-  console.log(index);
-}
-
-function freePlace(index) {}
 
 export const ParkingWidget = () => {
   const [parking, parkingDispatch] = useContext(ParkingInfoContext);
+
   useEffect(() => {
     async function fetchData() {
       await fetchParkingList(parkingDispatch);
@@ -34,20 +24,28 @@ export const ParkingWidget = () => {
     parking.data.length &&
     parking.data.reduce((places, item) => {
       let place;
-      if (item.uid === "me") {
+      if (item.userId === firebaseTools.currentUser()) {
         place = (
-          <div className="park-place" key={item.num}>
+          <div className="park-place"
+            onClick={ () => {
+              reserveParking(item.id, parkingDispatch)
+              fetchParkingList(parkingDispatch);
+            } }
+            key={item.num}>
             {item.num}
-            <div className="icon" onClick={() => freePlace(item.num)}>
+            <div className="icon">
               ✓
             </div>
           </div>
         );
-      } else if (!item.uid) {
+      } else if (item.userId === undefined) {
         place = (
           <div
             className="park-place"
-            onClick={() => setMyPlace(item.num)}
+            onClick={ () => {
+              reserveParking(item.id, parkingDispatch)
+              fetchParkingList(parkingDispatch);
+            } }
             key={item.num}
           >
             {item.num}

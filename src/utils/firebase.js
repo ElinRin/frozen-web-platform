@@ -143,9 +143,14 @@ export const firebaseTools = {
 
   fetchParkingList: () =>
     parkingFS
+      .orderBy('num')
       .get()
       .then(parkingList => {
-        let data = parkingList.docs.map(a => a.data());
+        let data = parkingList.docs.map(a => {
+          let res = a.data();
+          res.id = a.id;
+          return res;
+        });
         console.log(data);
         return data;
       })
