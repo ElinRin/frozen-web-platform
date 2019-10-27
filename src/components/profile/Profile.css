@@ -4,14 +4,6 @@
   border-radius: 50%;
 }
 
-.wrapper {
-  background-color: white;
-  border: var(--main-border);
-  border-radius: var(--main-border-radius);
-  margin-top: 50px;
-  padding: 20px;
-}
-
 .header {
   align-items: center;
   padding-top: 20px;

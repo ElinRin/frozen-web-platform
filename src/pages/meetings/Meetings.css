@@ -1,7 +1,7 @@
 .meetings-wrapper {
     background: white;
     border-radius: var(--main-border-radius);
-    margin-top: 50px;
+    margin-top: 20px;
     padding: 20px;
     width: 60%;
 }

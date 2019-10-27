@@ -1,6 +1,6 @@
-import React, {useState, useContext, useEffect} from "react";
-import {Col, Container, Row, Media, Table, InputGroup, InputGroupAddon, Input} from "reactstrap";
-import {ThreeStageToggle, WorkplaceMap} from "..";
+import React, {useState} from "react";
+import {Col, Container, Row} from "reactstrap";
+import {ThreeStageToggle} from "..";
 
 
 import "./WorkplaceFilter.css";
@@ -34,23 +34,16 @@ export const WorkplaceFilter = ({ workPlaceList, setListDisplay}) => {
   };
 
   return (
-    <Container className="wrapper">
-      <Row>
-        <Col lg="3">
-          <Row>
-            {
-              params.map((value, index) => (
-                <Col className="mt-4">
-                  <ThreeStageToggle key={index} index={index}
-                                    updateValue={updateParams}
-                                    name={value.name}/>
-                </Col>
-              ))
-            }
-
-          </Row>
-        </Col>
-      </Row>
-    </Container>
+    <div>
+      {
+        params.map((value, index) => (
+          <div className="mt-4">
+            <ThreeStageToggle key={index} index={index}
+                              updateValue={updateParams}
+                              name={value.name}/>
+          </div>
+        ))
+      }
+    </div>
   )
 };

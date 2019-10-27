@@ -1,5 +1,5 @@
 import React, {useState, useContext} from "react";
-import {Col, Container, Row, Media, Table, InputGroup, InputGroupAddon, Input} from "reactstrap";
+import { Col, Container, Row, InputGroup, InputGroupAddon, Input } from "reactstrap";
 
 
 import "./WorkplaceSearch.css";
