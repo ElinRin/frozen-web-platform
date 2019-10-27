@@ -1,8 +1,11 @@
-import React, {useEffect, useState, useContext} from "react";
+import React, { useEffect, useState, useContext } from "react";
 
-import {WorkplaceSearch, WorkplaceFilter, WorkplaceMap} from "../../components";
-import {WorkPlaceInfoContext} from "../../app/Context";
-import {fetchWorkPlaceListByFloor} from "../../actions/workPlace";
+import { WorkplaceSearch, WorkplaceFilter, WorkplaceMap } from "../../components";
+import { WorkPlaceInfoContext } from "../../app/Context";
+import { fetchWorkPlaceListByFloor } from "../../actions/workPlace";
+import { Col, Container, Row } from "reactstrap"
+
+import "./Workplace.css"
 
 export const Workplace = () => {
 
@@ -16,10 +19,24 @@ export const Workplace = () => {
   // console.log(workPlaceInfo);
 
   return (
-    <div className="home-container">
-      <WorkplaceSearch setListDisplay={setListDisplay}/>
-      <WorkplaceFilter setListDisplay={setListDisplay} workPlaceList={workPlaceList}/>
-      <WorkplaceMap listToDisplay={listToDisplay}/>
-    </div>
+    <Container>
+      <Row>
+        <Col xs="12">
+         <WorkplaceSearch setListDisplay={setListDisplay}/>
+        </Col>
+      </Row>
+        <Row style={{ marginTop: '10px' }}>
+          <Col xs="3">
+            <div className="wrapper workplace-filter-wrapper">
+              <WorkplaceFilter setListDisplay={setListDisplay} workPlaceList={workPlaceList}/>
+            </div>
+          </Col>
+          <Col xs="9">
+            <div className="wrapper">
+              <WorkplaceMap listToDisplay={listToDisplay}/>
+            </div>
+          </Col>
+        </Row>
+      </Container>
   )
 };
