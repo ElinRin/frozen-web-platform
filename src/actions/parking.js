@@ -9,7 +9,6 @@ export const fetchParking = async (parkingId, dispatch) =>
 
 export const fetchParkingList = async dispatch =>
   firebaseTools.fetchParkingList().then(data => {
-    console.log(data);
     return dispatch({
       type: FETCH_PARKING_LIST,
       payload: { data }

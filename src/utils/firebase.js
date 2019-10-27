@@ -88,7 +88,7 @@ export const firebaseTools = {
     workPlacesFS
       .where("floor", "==", floor)
       .get()
-      .then(workPlaceList => workPlaceList.docs.map(a => a.data()))
+      .then(workPlaceList => workPlaceList.docs.map(a => ({id: a.id, ...a.data()})))
       .catch(error => ({
         errorCode: error.code,
         errorMessage: error.message
@@ -151,7 +151,6 @@ export const firebaseTools = {
           res.id = a.id;
           return res;
         });
-        console.log(data);
         return data;
       })
       .catch(error => ({

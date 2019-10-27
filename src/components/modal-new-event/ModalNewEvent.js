@@ -38,7 +38,6 @@ export const ModalNewEvent = ({ className, room }) => {
 
   const changeValue = e => {
     setSelectedRoom(e.target.innerText);
-    console.log(e.target.innerText);
   };
 
   return (

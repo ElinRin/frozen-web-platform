@@ -8,8 +8,6 @@ export const ParkingWidget = () => {
   const [parking, parkingDispatch] = useContext(ParkingInfoContext);
   const NAVALNY = '0qryX4FCS7XRZ2tRq10AHt9xVUB2';
 
-  console.log(firebaseTools.currentUser());
-
   useEffect(() => {
     async function fetchData() {
       await fetchParkingList(parkingDispatch);
