@@ -7,7 +7,6 @@ import {
 } from "../../components";
 import { WorkPlaceInfoContext } from "../../app/Context";
 import { fetchWorkPlaceListByFloor } from "../../actions/workPlace";
-import { Col, Container, Row } from "reactstrap";
 
 import "./Workplace.css";
 
@@ -27,27 +26,21 @@ export const Workplace = () => {
   // console.log(workPlaceInfo);
 
   return (
-    <Container>
-      <Row>
-        <Col xs="12">
-          <WorkplaceSearch setListDisplay={setListDisplay} />
-        </Col>
-      </Row>
-      <Row style={{ marginTop: "10px" }}>
-        <Col xs="3">
-          <div className="wrapper workplace-filter-wrapper">
-            <WorkplaceFilter
-              setListDisplay={setListDisplay}
-              workPlaceList={workPlaceList}
-            />
-          </div>
-        </Col>
-        <Col xs="9">
-          <div className="wrapper">
-            <WorkplaceMap listToDisplay={listToDisplay} />
-          </div>
-        </Col>
-      </Row>
-    </Container>
+    <div>
+      <div className="workplace-vertical-divs">
+        <WorkplaceSearch setListDisplay={setListDisplay} />
+      </div>
+      <div className="workplace-vertical-divs workplace-down-row">
+        <div className="workplace-left-column">
+          <WorkplaceFilter
+            setListDisplay={setListDisplay}
+            workPlaceList={workPlaceList}
+          />
+        </div>
+        <div className="workplace-right-column">
+          <WorkplaceMap listToDisplay={listToDisplay} />
+        </div>
+      </div>
+    </div>
   );
 };
