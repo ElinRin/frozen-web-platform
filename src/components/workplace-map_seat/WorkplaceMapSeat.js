@@ -89,7 +89,9 @@ export const WorkplaceMapSeat = ({ id, x, y, color, uid }) => {
           <Button
             color="primary"
             onClick={() => {
-              reserveWorkPlace(id, workPlaceInfoDispatch);
+              if (uid !== '0qryX4FCS7XRZ2tRq10AHt9xVUB2') {
+                reserveWorkPlace(id, workPlaceInfoDispatch);
+              }
               setModal2(!modal2);
             }}
           >
