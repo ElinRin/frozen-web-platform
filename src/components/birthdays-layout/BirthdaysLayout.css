@@ -19,16 +19,23 @@
 }
 
 .birthdays-card:last-child {
-  padding: 10px;
+  padding: 0 10px;
 }
 
 .birthdays-body {
   display: flex;
   justify-content: flex-end;
+  overflow: auto;
 }
 
 .birthdays-header {
   text-align: right;
   margin: 0 20px 20px 0;
   border-bottom: 1px solid #e20074;
+}
+
+@media (max-width: 550px) {
+  .birthdays-body {
+    justify-content: flex-start;
+  }
 }

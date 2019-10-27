@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Col, Container, Row, Media, Button } from "reactstrap";
+import { Button } from "reactstrap";
 import { DaysOffLayout, BirthdaysLayout, NewsLayout } from "../../components";
 import { changeStatus, fetchMe } from "../../actions/user";
 import { ProfileContext } from "../../app/Context";
@@ -26,44 +26,34 @@ export const Main = () => {
   const [status, setStatus] = useState(initialStatus);
 
   return (
-    <Container className="wrapper-large">
-      <Row>
-        <Col xs="2" className="main-up-left-block main-left-block">
-          <Media src={profile.profileImage} className="profile-photo-small" />
-        </Col>
-        <Col xs="2" className="main-up-right-block main-left-block">
+    <div className="main-horizontal-wrapper">
+      <div className="main-left-column">
+        <div className="main-img-container">
+          <img src={profile.profileImage} className="profile-photo-small" />
           <h3>{profile.fullName}</h3>
-          <Button
-            color={status.color}
-            className="profile-button"
-            onClick={() => {
-              if (status.pos === 0) {
-                setStatus(onWork);
-              } else {
-                setStatus(atHome);
-              }
-              changeStatus(status.label, profileDispatch).catch(error =>
-                console.log(error)
-              );
-            }}
-          >
-            {status.label}
-          </Button>
-        </Col>
-        <Col xs="8">
-          <BirthdaysLayout />
-        </Col>
-      </Row>
-      <Row>
-        <Col xs="4" className="main-left-block main-down-block">
-          <div className="wrapper-days-off">
-            <DaysOffLayout />
-          </div>
-        </Col>
-        <Col xs="8">
-          <NewsLayout />
-        </Col>
-      </Row>
-    </Container>
+        </div>
+        <Button
+          color={status.color}
+          className="profile-button"
+          onClick={() => {
+            if (status.pos === 0) {
+              setStatus(onWork);
+            } else {
+              setStatus(atHome);
+            }
+            changeStatus(status.label, profileDispatch).catch(error =>
+              console.log(error)
+            );
+          }}
+        >
+          {status.label}
+        </Button>
+        <DaysOffLayout />
+      </div>
+      <div className="main-right-column">
+        <BirthdaysLayout />
+        <NewsLayout />
+      </div>
+    </div>
   );
 };
