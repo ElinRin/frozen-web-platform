@@ -1,14 +1,19 @@
 import React from "react";
 
 import photo from "../../mocks/photo_example.jpg";
+import photo1 from "../../mocks/example1.jpeg";
+import photo2 from "../../mocks/example2.jpeg";
+import photo3 from "../../mocks/example3.png";
+import photo4 from "../../mocks/example4.jpeg";
 
 import "./BirthdaysLayout.css";
 
 const items = [
   { photoUrl: photo, userName: "Nikita", age: 23 },
-  { photoUrl: photo, userName: "Elina", age: 25 },
-  { photoUrl: photo, userName: "Katya", age: 22 },
-  { photoUrl: photo, userName: "Julia", age: 28 }
+  { photoUrl: photo1, userName: "Elina", age: 25 },
+  { photoUrl: photo2, userName: "Alex", age: 22 },
+  { photoUrl: photo3, userName: "Julia", age: 28 },
+  { photoUrl: photo4, userName: "Anna", age: 77 }
 ];
 
 export const BirthdaysLayout = () => (
