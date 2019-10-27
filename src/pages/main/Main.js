@@ -29,7 +29,11 @@ export const Main = () => {
     <div className="main-horizontal-wrapper">
       <div className="main-left-column">
         <div className="main-img-container">
-          <img src={profile.profileImage} className="profile-photo-small" />
+          <img
+            src={profile.profileImage}
+            className="profile-photo-small"
+            alt=""
+          />
           <h3>{profile.fullName}</h3>
         </div>
         <Button
