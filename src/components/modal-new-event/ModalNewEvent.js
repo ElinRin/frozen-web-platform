@@ -76,28 +76,29 @@ export const ModalNewEvent = ({ className, room }) => {
                 return <ListGroupItem>{name}</ListGroupItem>;
               })}
             </ListGroup>
-          </Form>
-          <div className="grid-wrapper">
-            <div>
-              <UncontrolledDropdown>
-                <DropdownToggle caret>{selectedRoom}</DropdownToggle>
-                <DropdownMenu>
-                  <DropdownItem header>First floor</DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem onClick={changeValue} dropDownValue="room1">
-                    Room 1{" "}
-                  </DropdownItem>
-                  <DropdownItem onClick={changeValue} dropDownValue="room2">
-                    Room 2{" "}
-                  </DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
-            </div>
-
+          <FormGroup>
+            <div className="grid-wrapper">
+              <div>
+                <UncontrolledDropdown>
+                  <DropdownToggle caret>{selectedRoom}</DropdownToggle>
+                  <DropdownMenu>
+                    <DropdownItem header>First floor</DropdownItem>
+                    <DropdownItem divider />
+                    <DropdownItem onClick={changeValue} dropDownValue="room1">
+                      Room 1{" "}
+                    </DropdownItem>
+                    <DropdownItem onClick={changeValue} dropDownValue="room2">
+                      Room 2{" "}
+                    </DropdownItem>
+                  </DropdownMenu>
+                </UncontrolledDropdown>
+              </div>
             <Button onClick={setSuggestedRoom} color="primary">
               Suggest
             </Button>
           </div>
+          </FormGroup>
+        </Form>
         </ModalBody>
         <ModalFooter>
           <Button color="primary" onClick={toggle}>
