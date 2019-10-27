@@ -143,7 +143,7 @@ export const firebaseTools = {
 
   fetchParkingList: () =>
     parkingFS
-      .orderBy('num')
+      .orderBy("num")
       .get()
       .then(parkingList => {
         let data = parkingList.docs.map(a => {

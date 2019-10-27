@@ -83,7 +83,7 @@ export const parking = (state = null, action) => {
       return { ...state, ...action.payload };
 
     case FETCH_PARKING_LIST:
-      return { ...state, ...action.payload};
+      return { ...state, ...action.payload };
 
     case RESERVE_PARKING:
       return { ...state, ...action.payload };

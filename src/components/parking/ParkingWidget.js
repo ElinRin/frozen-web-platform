@@ -1,9 +1,8 @@
-import React, { useState, useContext, useEffect } from "react";
-import "./ParkingWidget.css";
+import React, { useContext, useEffect } from "react";
 import { fetchParkingList, reserveParking } from "../../actions/parking";
 import { ParkingInfoContext } from "../../app/Context";
 import { firebaseTools } from "../../utils/firebase";
-
+import "./ParkingWidget.css";
 
 export const ParkingWidget = () => {
   const [parking, parkingDispatch] = useContext(ParkingInfoContext);
@@ -13,7 +12,6 @@ export const ParkingWidget = () => {
       await fetchParkingList(parkingDispatch);
     }
     if (!parking.data) {
-      console.log({ parking });
       fetchData();
     }
   }, [parkingDispatch, parking]);
@@ -26,26 +24,26 @@ export const ParkingWidget = () => {
       let place;
       if (item.userId === firebaseTools.currentUser()) {
         place = (
-          <div className="park-place"
-            onClick={ () => {
-              reserveParking(item.id, parkingDispatch)
+          <div
+            className="park-place"
+            onClick={() => {
+              reserveParking(item.id, parkingDispatch);
               fetchParkingList(parkingDispatch);
-            } }
-            key={item.num}>
+            }}
+            key={item.num}
+          >
             {item.num}
-            <div className="icon">
-              ✓
-            </div>
+            <div className="icon">✓</div>
           </div>
         );
       } else if (item.userId === undefined) {
         place = (
           <div
             className="park-place"
-            onClick={ () => {
-              reserveParking(item.id, parkingDispatch)
+            onClick={() => {
+              reserveParking(item.id, parkingDispatch);
               fetchParkingList(parkingDispatch);
-            } }
+            }}
             key={item.num}
           >
             {item.num}
@@ -61,8 +59,6 @@ export const ParkingWidget = () => {
       }
       return [...places, place];
     }, []);
-
-  console.log({ places, parking });
 
   return (
     <div className="parking-widget">

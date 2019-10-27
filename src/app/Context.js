@@ -14,14 +14,21 @@ export const ParkingInfoContext = React.createContext(null);
 export const Context = ({ children }) => {
   const [profile, profileDispatch] = useReducer(profileReducer, {});
   const [usersInfo, usersInfoDispatch] = useReducer(usersInfoReducer, {});
-  const [workPlaceInfo, workPlaceInfoDispatch] = useReducer(workPlaceInfoReducer, {});
+  const [workPlaceInfo, workPlaceInfoDispatch] = useReducer(
+    workPlaceInfoReducer,
+    {}
+  );
   const [parkingInfo, parkingInfoDispatch] = useReducer(parkingInfoReducer, {});
 
   return (
     <ProfileContext.Provider value={[profile, profileDispatch]}>
       <UsersInfoContext.Provider value={[usersInfo, usersInfoDispatch]}>
-        <WorkPlaceInfoContext.Provider value={[workPlaceInfo, workPlaceInfoDispatch]}>
-          <ParkingInfoContext.Provider value={[parkingInfo, parkingInfoDispatch]}>
+        <WorkPlaceInfoContext.Provider
+          value={[workPlaceInfo, workPlaceInfoDispatch]}
+        >
+          <ParkingInfoContext.Provider
+            value={[parkingInfo, parkingInfoDispatch]}
+          >
             {children}
           </ParkingInfoContext.Provider>
         </WorkPlaceInfoContext.Provider>
