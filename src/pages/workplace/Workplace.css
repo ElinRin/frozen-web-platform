@@ -25,8 +25,21 @@
   overflow-y: hidden;
 }
 
-@media (min-width: 150px) {
+@media (max-width: 680px) {
+  .workplace-down-row {
+    flex-direction: column;
+  }
+
   .workplace-left-column {
     overflow: auto;
+    width: 100%;
+    margin: 2% 2% 2% 0;
+  }
+
+  .workplace-right-column {
+    overflow: auto;
+    width: 100%;
+    margin: 2% 2% 2% 0;
   }
 }
+
