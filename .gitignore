@@ -25,3 +25,4 @@ yarn-error.log*
 #webstorm
 *.xml
 *.iml
+dist
