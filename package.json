@@ -20,7 +20,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "start-desktop": "electron ./desktop/main.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -36,5 +37,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "electron": "^7.1.5",
+    "electron-builder": "^21.2.0",
+    "electron-webpack": "^2.7.4"
   }
 }
