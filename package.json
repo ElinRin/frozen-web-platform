@@ -19,6 +19,12 @@
         "dmg"
       ],
       "category": "public.app-category.productivity"
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "publisherName": "Dialog LLC"
     }
   },
   "dependencies": {
