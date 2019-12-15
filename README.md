@@ -1,1 +1,1 @@
-# Frozen HR for Magyar Telekom Group
+# Frozen HR

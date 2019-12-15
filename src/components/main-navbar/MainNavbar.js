@@ -92,7 +92,6 @@ export const MainNavbar = () => {
               <DropdownItem onClick={() => navigate(`/u/${profile.userId}`)}>
                 My Info
               </DropdownItem>
-              <DropdownItem>Change Password</DropdownItem>
               <DropdownItem divider />
               <DropdownItem
                 onClick={() => {

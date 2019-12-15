@@ -15,6 +15,10 @@ export const ColleaguesSearch = () => {
     await searchUsersByName(searchValue, usersInfoDispatch);
   };
 
+  useEffect(() => {
+    searchUsersByName(searchValue, usersInfoDispatch);
+  }, [searchValue, usersInfoDispatch]);
+
   return (
     <div className="wrapper">
       <Form onSubmit={handleSubmit}>
