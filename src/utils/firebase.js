@@ -103,9 +103,8 @@ export const firebaseTools = {
         errorMessage: error.message
       })),
 
-  fetchWorkPlaceListByFloor: floor =>
+  fetchWorkPlaceList: () =>
     workPlacesFS
-      .where("floor", "==", floor)
       .get()
       .then(workPlaceList =>
         workPlaceList.docs.map(a => ({ id: a.id, ...a.data() }))

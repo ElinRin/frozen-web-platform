@@ -16,8 +16,8 @@ export const fetchWorkPlace = async (workPlaceId, dispatch) => {
   })
 };
 
-export const fetchWorkPlaceListByFloor = async (floor, dispatch) => {
-  await firebaseTools.fetchWorkPlaceListByFloor(floor).then(workPlaceList => {
+export const fetchWorkPlaceList = async (dispatch) => {
+  await firebaseTools.fetchWorkPlaceList().then(workPlaceList => {
     return dispatch({
       type: FETCH_WORK_PLACE_LIST_BY_FLOOR,
       payload: { workPlaceList: workPlaceList }
