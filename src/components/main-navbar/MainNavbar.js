@@ -62,13 +62,19 @@ export const MainNavbar = () => {
       <Collapse isOpen={isOpen} navbar>
         <Nav className="main-navbar-items" navbar>
           <NavItem>
-            <NavLink onClick={() => navigate("/main")}>Main</NavLink>
+            <NavLink href="#" onClick={() => navigate("/main")}>
+              Main
+            </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink onClick={() => navigate("/workplace")}>Workplace</NavLink>
+            <NavLink href="#" onClick={() => navigate("/workplace")}>
+              Workplace
+            </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink onClick={() => navigate("/meetings")}>Meetings</NavLink>
+            <NavLink href="#" onClick={() => navigate("/meetings")}>
+              Meetings
+            </NavLink>
           </NavItem>
           <UncontrolledDropdown>
             <DropdownToggle nav caret>
