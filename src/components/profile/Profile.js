@@ -18,8 +18,6 @@ export const Profile = ({ userId }) => {
     }
   }, [user, userId, usersInfo]);
 
-  const returnEmpty = () => <Container className="wrapper wrapper-margin"></Container>;
-
   const returnProfile = profile => (
     <Container className="profile-wrapper">
       <div className="main-info">
@@ -75,7 +73,7 @@ export const Profile = ({ userId }) => {
 
   if (typeof user === "undefined") {
     fetchUser(userId, usersInfoDispatch).catch(error => console.log(error));
-    return returnEmpty();
+    return <div></div>;
   } else {
     return returnProfile(user);
   }

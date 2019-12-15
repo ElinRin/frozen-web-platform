@@ -90,7 +90,7 @@ export const WorkplaceMapSeat = ({ id, x, y, color, uid }) => {
           <Button
             color="primary"
             onClick={() => {
-              const userId = firebaseTools.currentUser();
+              const userId = firebaseTools.currentUserId();
               if (userId !== "0qryX4FCS7XRZ2tRq10AHt9xVUB2") {
                 reserveWorkPlace(id, workPlaceInfoDispatch);
               }

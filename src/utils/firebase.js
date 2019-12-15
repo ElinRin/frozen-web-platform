@@ -22,6 +22,15 @@ export const firebaseTools = {
         errorMessage: error.message
       })),
 
+  loginUserByToken: token =>
+    firebaseAuth
+      .signInWithCustomToken(token)
+      .then(userInfo => userInfo)
+      .catch(error => ({
+        errorCode: error.code,
+        errorMessage: error.message
+      })),
+
   logoutUser: () =>
     firebaseAuth.signOut().then(() => ({
       success: 1,
@@ -30,19 +39,27 @@ export const firebaseTools = {
 
   fetchMe: () => {
     const userId = firebaseAuth.currentUser && firebaseAuth.currentUser.uid;
-    return usersFS
-      .doc(userId)
-      .get()
-      .then(profile => {
-        return { userId, ...profile.data() };
-      })
-      .catch(error => ({
-        errorCode: error.code,
-        errorMessage: error.message
-      }));
+    if (userId) {
+      return usersFS
+        .doc(userId)
+        .get()
+        .then(profile => {
+          return { userId, ...profile.data() };
+        })
+        .catch(error => ({
+          errorCode: error.code,
+          errorMessage: error.message
+        }));
+    } else
+      return Promise.reject({
+        errorCode: 404,
+        errorMessage: "current user not found"
+      });
   },
 
-  currentUser: () => firebaseAuth.currentUser && firebaseAuth.currentUser.uid,
+  currentUser: () => firebaseAuth.currentUser,
+
+  currentUserId: () => firebaseAuth.currentUser && firebaseAuth.currentUser.uid,
 
   fetchUser: userId =>
     usersFS
@@ -91,7 +108,9 @@ export const firebaseTools = {
     workPlacesFS
       .where("floor", "==", floor)
       .get()
-      .then(workPlaceList => workPlaceList.docs.map(a => ({id: a.id, ...a.data()})))
+      .then(workPlaceList =>
+        workPlaceList.docs.map(a => ({ id: a.id, ...a.data() }))
+      )
       .catch(error => ({
         errorCode: error.code,
         errorMessage: error.message

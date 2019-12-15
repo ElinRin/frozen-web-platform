@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
+import { useCookies } from "react-cookie";
 import { navigate, usePath } from "hookrouter";
 import {
   Collapse,
@@ -16,25 +17,23 @@ import {
 } from "reactstrap";
 import logo from "../../images/frozen32.png";
 import { ProfileContext } from "../../app/Context";
-import { logoutUser, fetchMe } from "../../actions/user";
+import { logoutUser, fetchMe, loginUserByToken } from "../../actions/user";
 import { firebaseTools } from "../../utils/firebase";
 import { CURRENT_USER } from "../../actions/types";
 import "./MainNavbar.css";
 
 export const MainNavbar = () => {
+  const [cookies, setCookie, removeCookie] = useCookies(["token"]);
   const [isOpen, setIsOpen] = useState(false);
   const [profile, profileDispatch] = useContext(ProfileContext);
   const path = usePath();
   const toggle = () => setIsOpen(!isOpen);
 
   if (path !== "/login" && !(profile.userId && profile.userId.length)) {
-    const id = firebaseTools.currentUser();
-    if (id && id.length) {
-      profileDispatch({
-        type: CURRENT_USER,
-        payload: { userId: id }
+    if (cookies.token) {
+      loginUserByToken(cookies.token, profileDispatch).then(id => {
+        fetchMe(profileDispatch).catch(error => console.log(error));
       });
-      fetchMe(profileDispatch).catch(error => console.log(error));
     } else {
       navigate("/login", true);
     }
@@ -66,9 +65,6 @@ export const MainNavbar = () => {
             <NavLink onClick={() => navigate("/main")}>Main</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink onClick={() => navigate("/parking")}>Parking</NavLink>
-          </NavItem>
-          <NavItem>
             <NavLink onClick={() => navigate("/workplace")}>Workplace</NavLink>
           </NavItem>
           <NavItem>
@@ -89,7 +85,12 @@ export const MainNavbar = () => {
               </DropdownItem>
               <DropdownItem>Change Password</DropdownItem>
               <DropdownItem divider />
-              <DropdownItem onClick={() => logoutUser(profileDispatch)}>
+              <DropdownItem
+                onClick={() => {
+                  removeCookie("token");
+                  logoutUser(profileDispatch);
+                }}
+              >
                 Log Out
               </DropdownItem>
             </DropdownMenu>

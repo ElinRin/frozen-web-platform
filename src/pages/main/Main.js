@@ -4,7 +4,8 @@ import {
   DaysOffLayout,
   BirthdaysLayout,
   NewsLayout,
-  EventsLayout
+  EventsLayout,
+  Loader
 } from "../../components";
 import { changeStatus, fetchMe } from "../../actions/user";
 import { ProfileContext } from "../../app/Context";
@@ -35,7 +36,7 @@ export const Main = () => {
     setStatus(status);
   }, [profile.status]);
 
-  return (
+  return profile.userId ? (
     <div className="main-horizontal-wrapper">
       <div className="main-left-column">
         <div className="main-img-container">
@@ -71,5 +72,7 @@ export const Main = () => {
         <NewsLayout />
       </div>
     </div>
+  ) : (
+    <Loader />
   );
 };

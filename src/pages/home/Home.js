@@ -1,9 +1,13 @@
 import React from "react";
 
-import { Profile } from "../../components";
+import { Profile, Loader } from "../../components";
 
-export const Home = ({ userId }) => (
-  <div className="home-container">
-    <Profile userId={userId} />
-  </div>
-);
+export const Home = ({ userId }) => {
+  return userId ? (
+    <div className="home-container">
+      <Profile userId={userId} />
+    </div>
+  ) : (
+    <Loader />
+  );
+};

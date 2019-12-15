@@ -3,14 +3,17 @@ import React, { useEffect, useState, useContext } from "react";
 import {
   WorkplaceSearch,
   WorkplaceFilter,
-  WorkplaceMap
+  WorkplaceMap,
+  Loader
 } from "../../components";
 import { WorkPlaceInfoContext } from "../../app/Context";
 import { fetchWorkPlaceListByFloor } from "../../actions/workPlace";
+import { ProfileContext } from "../../app/Context";
 
 import "./Workplace.css";
 
 export const Workplace = () => {
+  const [profile] = useContext(ProfileContext);
   const [workPlaceInfo, workPlaceInfoDispatch] = useContext(
     WorkPlaceInfoContext
   );
@@ -29,7 +32,7 @@ export const Workplace = () => {
     setListDisplay(workPlaceInfo.workPlaceList || []);
   }, [workPlaceInfo]);
 
-  return (
+  return profile.userId ? (
     <div>
       <div className="workplace-vertical-divs">
         <WorkplaceSearch setListDisplay={setListDisplay} />
@@ -46,5 +49,7 @@ export const Workplace = () => {
         </div>
       </div>
     </div>
+  ) : (
+    <Loader />
   );
 };

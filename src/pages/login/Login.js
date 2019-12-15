@@ -1,24 +1,48 @@
-import React, {useState, useContext, useEffect} from "react";
-import {navigate} from "hookrouter";
-import {Button, Form, FormGroup, Input} from "reactstrap";
-import {ProfileContext} from "../../app/Context";
-import {loginUser} from "../../actions/user";
+import React, { useState, useContext, useEffect } from "react";
+import { useCookies } from "react-cookie";
+import { navigate } from "hookrouter";
+import { Button, Form, FormGroup, Input } from "reactstrap";
+import { firebaseTools } from "../../utils/firebase";
+import { ProfileContext } from "../../app/Context";
+import { loginUser } from "../../actions/user";
 import "./Login.css";
 
-export const Login = ({history}) => {
+export const Login = ({ history }) => {
+  const [cookies, setCookie, removeCookie] = useCookies(["token"]);
   const [profile, profileDispatch] = useContext(ProfileContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const handleSubmit = async event => {
     event.preventDefault();
-    await loginUser({email, password}, profileDispatch);
+    await loginUser({ email, password }, profileDispatch);
+
+    firebaseTools
+      .currentUser()
+      .getIdToken()
+      .then(token => {
+        setCookie("token", token, {
+          path: "/"
+        });
+      });
   };
 
   const testLogin = async () => {
-    await loginUser({
-      email: 'guest@telekom.com',
-      password: 'guest1'
-    }, profileDispatch);
+    await loginUser(
+      {
+        email: "guest@telekom.com",
+        password: "guest1"
+      },
+      profileDispatch
+    );
+
+    firebaseTools
+      .currentUser()
+      .getIdToken()
+      .then(token => {
+        setCookie("token", token, {
+          path: "/"
+        });
+      });
   };
 
   useEffect(() => {
@@ -29,14 +53,13 @@ export const Login = ({history}) => {
 
   return (
     <div className="login-container">
-      <Form className="login-form"
-            onSubmit={handleSubmit}>
+      <Form className="login-form" onSubmit={handleSubmit}>
         <FormGroup>
           <Input
             type="email"
             placeholder="Email"
             value={email}
-            onChange={({currentTarget: {value}}) => setEmail(value)}
+            onChange={({ currentTarget: { value } }) => setEmail(value)}
           />
         </FormGroup>
         <FormGroup>
@@ -44,7 +67,7 @@ export const Login = ({history}) => {
             type="password"
             placeholder="Password"
             value={password}
-            onChange={({currentTarget: {value}}) => setPassword(value)}
+            onChange={({ currentTarget: { value } }) => setPassword(value)}
           />
         </FormGroup>
         <Button color="primary">Log in</Button>
@@ -53,7 +76,9 @@ export const Login = ({history}) => {
         </Button>
       </Form>
 
-      <Button onClick={testLogin} color="primary">Guest log in</Button>
+      <Button onClick={testLogin} color="primary">
+        Guest log in
+      </Button>
     </div>
   );
 };

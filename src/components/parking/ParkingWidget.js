@@ -6,7 +6,7 @@ import "./ParkingWidget.css";
 
 export const ParkingWidget = () => {
   const [parking, parkingDispatch] = useContext(ParkingInfoContext);
-  const NAVALNY = '0qryX4FCS7XRZ2tRq10AHt9xVUB2';
+  const NAVALNY = "0qryX4FCS7XRZ2tRq10AHt9xVUB2";
 
   useEffect(() => {
     async function fetchData() {
@@ -23,12 +23,15 @@ export const ParkingWidget = () => {
     parking.data.length &&
     parking.data.reduce((places, item) => {
       let place;
-      if (item.userId === firebaseTools.currentUser() && firebaseTools.currentUser() !== NAVALNY) {
+      if (
+        item.userId === firebaseTools.currentUserId() &&
+        firebaseTools.currentUserId() !== NAVALNY
+      ) {
         place = (
           <div
             className="park-place"
             onClick={() => {
-              if (firebaseTools.currentUser() !== NAVALNY) {
+              if (firebaseTools.currentUserId() !== NAVALNY) {
                 reserveParking(item.id, parkingDispatch);
                 fetchParkingList(parkingDispatch);
               }
@@ -44,7 +47,7 @@ export const ParkingWidget = () => {
           <div
             className="park-place"
             onClick={() => {
-              if (firebaseTools.currentUser() !== NAVALNY) {
+              if (firebaseTools.currentUserId() !== NAVALNY) {
                 reserveParking(item.id, parkingDispatch);
                 fetchParkingList(parkingDispatch);
               }

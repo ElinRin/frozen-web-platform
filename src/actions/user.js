@@ -12,10 +12,21 @@ import { firebaseTools } from "../utils/firebase";
 
 export const loginUser = async (user, dispatch) => {
   await firebaseTools.loginUser(user);
+
   await dispatch({
     type: LOGIN_USER,
-    payload: { userId: firebaseTools.currentUser() }
+    payload: { userId: firebaseTools.currentUserId() }
   });
+};
+
+export const loginUserByToken = async (token, dispatch) => {
+  await firebaseTools.loginUserByToken(token);
+  await dispatch({
+    type: LOGIN_USER,
+    payload: { userId: firebaseTools.currentUserId() }
+  });
+
+  return firebaseTools.currentUserId();
 };
 
 export const logoutUser = async dispatch => {
@@ -26,18 +37,25 @@ export const logoutUser = async dispatch => {
 };
 
 export const fetchMe = async dispatch => {
-  await firebaseTools.fetchMe().then(profile =>
-    dispatch({
-      type: FETCH_ME,
-      payload: profile
-    })
-  );
+  await firebaseTools
+    .fetchMe()
+    .then(profile =>
+      dispatch({
+        type: FETCH_ME,
+        payload: profile
+      })
+    )
+    .catch(() =>
+      dispatch({
+        type: LOGOUT_USER
+      })
+    );
 };
 
 export const currentUser = async dispatch => {
   await dispatch({
     type: CURRENT_USER,
-    payload: { userId: firebaseTools.currentUser() }
+    payload: { userId: firebaseTools.currentUserId() }
   });
 };
 
@@ -57,7 +75,6 @@ export const changeStatus = async (newStatus, dispatch) => {
 
 export const searchUserByFullName = async (fullName, dispatch) => {
   firebaseTools.searchUserByFullName(fullName).then(userList => {
-
     dispatch({
       type: SEARCH_USER_BY_FULL_NAME,
       payload: { fullNameSearch: userList[0] }

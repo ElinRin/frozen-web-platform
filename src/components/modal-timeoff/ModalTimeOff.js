@@ -14,7 +14,6 @@ import {
 import "./ModalTimeOff.css";
 import { firebaseTools } from "../../utils/firebase";
 
-
 export const ModalTimeOff = ({ typeLabel, daysLabel, className }) => {
   const [modal, setModal] = useState(false);
   const [startDate, setStartDate] = useState("");
@@ -42,11 +41,9 @@ export const ModalTimeOff = ({ typeLabel, daysLabel, className }) => {
     const sd = new Date(startDate);
     const fd = new Date(finishDate);
     const num = (fd - sd) / (24 * 60 * 60 * 1000) + 1;
-    console.log(num);
     if (num > daysLabel) {
       setDaysError(true);
-    }
-    else {
+    } else {
       setDaysError(false);
       firebaseTools.dayOffUpdate(typeLabel, daysLabel - num);
       firebaseTools.newEvent({
@@ -55,7 +52,7 @@ export const ModalTimeOff = ({ typeLabel, daysLabel, className }) => {
         finishDate: finishDate,
         comment: comment
       });
-      return setModal(!modal)
+      return setModal(!modal);
     }
   };
 
@@ -66,7 +63,9 @@ export const ModalTimeOff = ({ typeLabel, daysLabel, className }) => {
         <div>{`${daysLabel} days`}</div>
       </div>
       <ModalArea isOpen={modal} toggle={toggle} className={className}>
-        <ModalHeader toggle={toggle}>Request Time Off: {label[typeLabel]}</ModalHeader>
+        <ModalHeader toggle={toggle}>
+          Request Time Off: {label[typeLabel]}
+        </ModalHeader>
         <ModalBody>
           <Form>
             <FormGroup>
@@ -75,7 +74,7 @@ export const ModalTimeOff = ({ typeLabel, daysLabel, className }) => {
                 type="date"
                 id="startDate"
                 value={startDate}
-                onChange={({currentTarget: {value}}) => setStartDate(value)}
+                onChange={({ currentTarget: { value } }) => setStartDate(value)}
               />
             </FormGroup>
             <FormGroup>
@@ -84,7 +83,9 @@ export const ModalTimeOff = ({ typeLabel, daysLabel, className }) => {
                 type="date"
                 id="finishDate"
                 value={finishDate}
-                onChange={({currentTarget: {value}}) => setFinishDate(value)}
+                onChange={({ currentTarget: { value } }) =>
+                  setFinishDate(value)
+                }
               />
             </FormGroup>
             <FormGroup>
@@ -93,7 +94,7 @@ export const ModalTimeOff = ({ typeLabel, daysLabel, className }) => {
                 type="text"
                 id="comment"
                 value={comment}
-                onChange={({currentTarget: {value}}) => setComment(value)}
+                onChange={({ currentTarget: { value } }) => setComment(value)}
               />
             </FormGroup>
           </Form>

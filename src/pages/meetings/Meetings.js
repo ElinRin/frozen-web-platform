@@ -1,16 +1,23 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Col, Container, Row } from "reactstrap";
-import { CustomCalendar, MeetingMap, ModalNewEvent } from "../../components";
+import {
+  CustomCalendar,
+  MeetingMap,
+  ModalNewEvent,
+  Loader
+} from "../../components";
+import { ProfileContext } from "../../app/Context";
 
 import "./Meetings.css";
 
 export const Meetings = () => {
+  const [profile] = useContext(ProfileContext);
   const [roomName, setRoomName] = useState("roomName");
   const openNewEventModal = roomName => {
     setRoomName(roomName);
   };
 
-  return (
+  return profile.userId ? (
     <Container>
       <Row>
         <Col className="meetings-wrapper">
@@ -28,5 +35,7 @@ export const Meetings = () => {
         </Col>
       </Row>
     </Container>
+  ) : (
+    <Loader />
   );
 };
