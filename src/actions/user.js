@@ -73,11 +73,11 @@ export const changeStatus = async (newStatus, dispatch) => {
   await fetchMe(dispatch);
 };
 
-export const searchUserByFullName = async (fullName, dispatch) => {
-  firebaseTools.searchUserByFullName(fullName).then(userList => {
+export const searchUsersByName = async (name, dispatch) => {
+  firebaseTools.searchUserByFullName(name).then(userList => {
     dispatch({
       type: SEARCH_USER_BY_FULL_NAME,
-      payload: { fullNameSearch: userList[0] }
+      payload: { searchList: userList }
     });
   });
 };

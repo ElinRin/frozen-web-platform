@@ -1,5 +1,5 @@
 export { MainNavbar } from "./main-navbar/MainNavbar";
-export { WorkplaceSearch } from "./workplace-search/WorkplaceSearch";
+export { ColleaguesSearch } from "./colleagues-search/ColleaguesSearch";
 export { WorkplaceFilter } from "./workplace-filter/WorkplaceFilter";
 export { ThreeStageToggle } from "./three-stage-toggle/ThreeStageToggle";
 export { WorkplaceMap } from "./workplace-map/WorkplaceMap";

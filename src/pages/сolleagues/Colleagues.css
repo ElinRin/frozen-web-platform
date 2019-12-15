@@ -1,0 +1,48 @@
+.workplace-filter-wrapper {
+  padding: 20px;
+  overflow: auto;
+}
+
+.workplace-vertical-divs {
+  margin: 2% 5%;
+  width: 90%;
+}
+
+.users {
+  margin: 1px 5%;
+  width: 90%;
+  display: flex;
+}
+
+.user-info {
+  padding: 5px 10px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.user {
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+  border: var(--main-border);
+  border-radius: var(--main-border-radius);
+  color: #545b62;
+  background-color: white;
+  margin: 10px 1px;
+  padding: 10px;
+  text-align: center;
+  width: 100%;
+}
+
+.user:hover,
+.user:focus {
+  text-decoration: none;
+  color: #e20074;
+  border-color: #e20074;
+}
+
+.photo {
+  width: 80px;
+  height: 80px;
+}

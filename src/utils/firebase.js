@@ -11,7 +11,6 @@ const parkingFS = firebaseFS.collection("parking");
 const daysOffFS = firebaseFS.collection("daysOff");
 const eventsFS = firebaseFS.collection("events");
 
-
 export const firebaseTools = {
   loginUser: user =>
     firebaseAuth
@@ -88,7 +87,7 @@ export const firebaseTools = {
     usersFS
       .where("fullName", "==", fullName)
       .get()
-      .then(userList => userList.docs.map(a => a.data()))
+      .then(userList => userList.docs.map(a => ({ userId: a.id, ...a.data() })))
       .catch(error => ({
         errorCode: error.code,
         errorMessage: error.message
@@ -214,7 +213,8 @@ export const firebaseTools = {
       .get()
       .then(events => ({
         userId: userId,
-        events: events.docs.map(a => a.data())}))
+        events: events.docs.map(a => a.data())
+      }))
       .catch(error => ({
         errorCode: error.code,
         errorMessage: error.message
@@ -247,18 +247,16 @@ export const firebaseTools = {
       }));
   },
 
-  allUsers: () => usersFS
-    .get()
-    .then(userList =>
-    {
-      console.log(userList.docs);
-      return userList.docs.map(a => ({userId: a.id, ...a.data()}))
-    }
-    )
-    .catch(error => ({
-      errorCode: error.code,
-      errorMessage: error.message
-    }))
+  allUsers: () =>
+    usersFS
+      .get()
+      .then(userList => {
+        return userList.docs.map(a => ({ userId: a.id, ...a.data() }));
+      })
+      .catch(error => ({
+        errorCode: error.code,
+        errorMessage: error.message
+      }))
 
   // fetchBirthDayUsers: () => {
   //   const userList = [];

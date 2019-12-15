@@ -18,8 +18,6 @@ import {
 import logo from "../../images/frozen32.png";
 import { ProfileContext } from "../../app/Context";
 import { logoutUser, fetchMe, loginUserByToken } from "../../actions/user";
-import { firebaseTools } from "../../utils/firebase";
-import { CURRENT_USER } from "../../actions/types";
 import "./MainNavbar.css";
 
 export const MainNavbar = () => {
@@ -69,6 +67,11 @@ export const MainNavbar = () => {
           <NavItem>
             <NavLink href="#" onClick={() => navigate("/workplace")}>
               Workplace
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink href="#" onClick={() => navigate("/colleagues")}>
+              Colleagues
             </NavLink>
           </NavItem>
           <NavItem>
