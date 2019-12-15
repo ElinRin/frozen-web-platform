@@ -1,7 +1,9 @@
 .modal-time-off-button {
+  cursor: pointer;
   border: var(--main-border);
   border-radius: var(--main-border-radius);
-  color: rgba(56, 56, 56, 1);
+  border-color: #545b62;
+  color: #545b62;
   background-color: white;
   margin: 10px 1px;
   padding: 2px;
@@ -10,10 +12,7 @@
 
 .modal-time-off-button:hover,
 .modal-time-off-button:focus {
+  text-decoration: none;
   color: #e20074;
-  background-color: rgba(237, 237, 237, 0.6);
-}
-
-.modal-time-off-button:active {
-  background-color: rgba(237, 237, 237, 1);
+  border-color: #e20074;
 }

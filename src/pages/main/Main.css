@@ -21,7 +21,14 @@
 }
 
 .profile-button {
+  outline: none !important;
   width: 100%;
+}
+
+.profile-button:focus,
+.profile-button:hover {
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 .profile-photo-small {

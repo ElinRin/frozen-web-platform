@@ -15,8 +15,8 @@ export const Main = () => {
     fetchData();
   }, [profile.userId, profileDispatch]);
 
-  const atHome = { pos: 0, label: "At home", color: "secondary" };
-  const onWork = { pos: 1, label: "On work", color: "primary" };
+  const atHome = { pos: 0, label: "not available", color: "secondary" };
+  const onWork = { pos: 1, label: "available", color: "primary" };
   let initialStatus;
   if (profile.status === "On work") {
     initialStatus = onWork;
