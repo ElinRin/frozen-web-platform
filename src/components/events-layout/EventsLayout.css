@@ -1,0 +1,16 @@
+.chat-message-header {
+  margin-bottom: 3px;
+  border-bottom: 1px solid #c8cbcf;
+  display: flex;
+  justify-content: space-between;
+}
+
+.chat-wrapper {
+  background-color: white;
+  border-radius: var(--main-border-radius);
+  padding: 20px 10px 10px;
+}
+
+.chat-card {
+  margin: 40px 10px;
+}

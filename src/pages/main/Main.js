@@ -1,6 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Button } from "reactstrap";
-import { DaysOffLayout, BirthdaysLayout, NewsLayout } from "../../components";
+import {
+  DaysOffLayout,
+  BirthdaysLayout,
+  NewsLayout,
+  EventsLayout
+} from "../../components";
 import { changeStatus, fetchMe } from "../../actions/user";
 import { ProfileContext } from "../../app/Context";
 import "./Main.css";
@@ -53,6 +58,7 @@ export const Main = () => {
           {status.label}
         </Button>
         <DaysOffLayout />
+        <EventsLayout />
       </div>
       <div className="main-right-column">
         <BirthdaysLayout />
