@@ -1,27 +1,32 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 
 import "./BirthdaysLayout.css";
-import {firebaseTools} from "../../utils/firebase";
+import { firebaseTools } from "../../utils/firebase";
 import { navigate, usePath } from "hookrouter";
 
-
 export const BirthdaysLayout = () => {
-
   const today = new Date();
   const [birthday, setBirthday] = useState([]);
   useEffect(() => {
-    firebaseTools.allUsers().then(userList => userList
-      .map(a => {
-        a.birthDate = new Date(a.birthDate);
-        a.age = today.getFullYear() - a.birthDate.getFullYear();
-        return a;
-      })
-      .filter(a => {
-        return today.getDate() === a.birthDate.getDate() && today.getMonth() === a.birthDate.getMonth()
-      })
-      .sort((a, b) => (a.age - b.age))
-    ).then(a => setBirthday(a))
-  }, []);
+    firebaseTools
+      .allUsers()
+      .then(userList =>
+        userList
+          .map(a => {
+            a.birthDate = new Date(a.birthDate);
+            a.age = today.getFullYear() - a.birthDate.getFullYear();
+            return a;
+          })
+          .filter(a => {
+            return (
+              today.getDate() === a.birthDate.getDate() &&
+              today.getMonth() === a.birthDate.getMonth()
+            );
+          })
+          .sort((a, b) => a.age - b.age)
+      )
+      .then(a => setBirthday(a));
+  }, [today]);
 
   return (
     <div className="birthdays-wrapper">
