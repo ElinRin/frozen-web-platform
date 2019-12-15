@@ -8,6 +8,9 @@ export const firebaseFS = firebaseApp.firestore();
 const usersFS = firebaseFS.collection("users");
 const workPlacesFS = firebaseFS.collection("workPlaces");
 const parkingFS = firebaseFS.collection("parking");
+const daysOffFS = firebaseFS.collection("daysOff");
+const eventsFS = firebaseFS.collection("events");
+
 
 export const firebaseTools = {
   loginUser: user =>
@@ -169,7 +172,62 @@ export const firebaseTools = {
         errorCode: error.code,
         errorMessage: error.message
       }));
+  },
+
+  daysOff: () => {
+    const userId = firebaseAuth.currentUser && firebaseAuth.currentUser.uid;
+    return daysOffFS
+      .doc(userId)
+      .get()
+      .then(profile => {
+        return { userId, ...profile.data() };
+      })
+      .catch(error => ({
+        errorCode: error.code,
+        errorMessage: error.message
+      }));
+  },
+
+  events: () => {
+    const userId = firebaseAuth.currentUser && firebaseAuth.currentUser.uid;
+    return eventsFS
+      .where("userId", "==", userId)
+      .get()
+      .then(events => ({
+        userId: userId,
+        events: events.docs.map(a => a.data())}))
+      .catch(error => ({
+        errorCode: error.code,
+        errorMessage: error.message
+      }));
+  },
+
+  dayOffUpdate: (label, number) => {
+    const userId = firebaseAuth.currentUser && firebaseAuth.currentUser.uid;
+    return daysOffFS
+      .doc(userId)
+      .update({
+        [label]: number
+      })
+      .catch(error => ({
+        errorCode: error.code,
+        errorMessage: error.message
+      }));
+  },
+
+  newEvent: event => {
+    const userId = firebaseAuth.currentUser && firebaseAuth.currentUser.uid;
+    return eventsFS
+      .add({
+        userId: userId,
+        ...event
+      })
+      .catch(error => ({
+        errorCode: error.code,
+        errorMessage: error.message
+      }));
   }
+
 
   // fetchBirthDayUsers: () => {
   //   const userList = [];

@@ -20,15 +20,20 @@ export const Main = () => {
     fetchData();
   }, [profile.userId, profileDispatch]);
 
-  const atHome = { pos: 0, label: "not available", color: "secondary" };
-  const onWork = { pos: 1, label: "available", color: "primary" };
-  let initialStatus;
-  if (profile.status === "On work") {
-    initialStatus = onWork;
-  } else {
-    initialStatus = atHome;
-  }
-  const [status, setStatus] = useState(initialStatus);
+  const notAvailable = { pos: 0, label: "not available", color: "secondary" };
+  const available = { pos: 1, label: "available", color: "primary" };
+
+  const [status, setStatus] = useState(notAvailable);
+
+  useEffect(() => {
+    let status;
+    if (profile.status === "available") {
+      status = available;
+    } else {
+      status = notAvailable;
+    }
+    setStatus(status);
+  }, [profile.status]);
 
   return (
     <div className="main-horizontal-wrapper">
@@ -45,12 +50,13 @@ export const Main = () => {
           color={status.color}
           className="profile-button"
           onClick={() => {
+            let st;
             if (status.pos === 0) {
-              setStatus(onWork);
+              st = available;
             } else {
-              setStatus(atHome);
+              st = notAvailable;
             }
-            changeStatus(status.label, profileDispatch).catch(error =>
+            changeStatus(st.label, profileDispatch).catch(error =>
               console.log(error)
             );
           }}
