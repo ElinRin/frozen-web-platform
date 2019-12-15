@@ -1,32 +1,44 @@
-import React from "react";
-
-import photo from "../../mocks/photo_example.jpg";
-import photo1 from "../../mocks/example1.jpeg";
-import photo2 from "../../mocks/example2.jpeg";
-import photo3 from "../../mocks/example3.png";
-import photo4 from "../../mocks/example4.jpeg";
+import React, {useEffect, useState} from "react";
 
 import "./BirthdaysLayout.css";
+import {firebaseTools} from "../../utils/firebase";
+import { navigate, usePath } from "hookrouter";
 
-const items = [
-  { photoUrl: photo, userName: "Nikita", age: 23 },
-  { photoUrl: photo1, userName: "Elina", age: 25 },
-  { photoUrl: photo2, userName: "Alex", age: 22 },
-  { photoUrl: photo3, userName: "Julia", age: 28 },
-  { photoUrl: photo4, userName: "Anna", age: 77 }
-];
 
-export const BirthdaysLayout = () => (
-  <div className="birthdays-wrapper">
-    <h2 className="birthdays-header">Happy birthday!</h2>
-    <div className="birthdays-body">
-      {items.map(({ photoUrl, userName, age }, idx) => (
-        <div key={idx} className="birthdays-card">
-          <img src={photoUrl} alt="" className="birthdays-photo-small" />
-          <div>{userName}</div>
-          <div>{age} years</div>
-        </div>
-      ))}
+export const BirthdaysLayout = () => {
+
+  const today = new Date();
+  const [birthday, setBirthday] = useState([]);
+  useEffect(() => {
+    firebaseTools.allUsers().then(userList => userList
+      .map(a => {
+        a.birthDate = new Date(a.birthDate);
+        a.age = today.getFullYear() - a.birthDate.getFullYear();
+        return a;
+      })
+      .filter(a => {
+        return today.getDate() === a.birthDate.getDate() && today.getMonth() === a.birthDate.getMonth()
+      })
+      .sort((a, b) => (a.age - b.age))
+    ).then(a => setBirthday(a))
+  }, []);
+
+  return (
+    <div className="birthdays-wrapper">
+      <h2 className="birthdays-header">Happy birthday!</h2>
+      <div className="birthdays-body">
+        {birthday.map(({ userId, profileImage, fullName, age }, idx) => (
+          <div
+            key={idx}
+            className="birthdays-card"
+            onClick={() => navigate(`/u/${userId}`)}
+          >
+            <img src={profileImage} alt="" className="birthdays-photo-small" />
+            <div>{fullName}</div>
+            <div>{age} years</div>
+          </div>
+        ))}
+      </div>
     </div>
-  </div>
-);
+  );
+};

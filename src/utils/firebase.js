@@ -245,7 +245,20 @@ export const firebaseTools = {
         errorCode: error.code,
         errorMessage: error.message
       }));
-  }
+  },
+
+  allUsers: () => usersFS
+    .get()
+    .then(userList =>
+    {
+      console.log(userList.docs);
+      return userList.docs.map(a => ({userId: a.id, ...a.data()}))
+    }
+    )
+    .catch(error => ({
+      errorCode: error.code,
+      errorMessage: error.message
+    }))
 
   // fetchBirthDayUsers: () => {
   //   const userList = [];
