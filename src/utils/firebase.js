@@ -247,7 +247,6 @@ export const firebaseTools = {
       }));
   }
 
-
   // fetchBirthDayUsers: () => {
   //   const userList = [];
   //   return userList;

@@ -20,6 +20,8 @@ export const ModalTimeOff = ({ typeLabel, daysLabel, className }) => {
   const [finishDate, setFinishDate] = useState("");
   const [comment, setComment] = useState("");
   const [daysError, setDaysError] = useState(false);
+  const [startError, setStartError] = useState(false);
+  const [finishError, setFinishError] = useState(false);
 
   const label = {
     everyYearVacation: "Every Year Vacation",
@@ -40,10 +42,23 @@ export const ModalTimeOff = ({ typeLabel, daysLabel, className }) => {
     firebaseTools.changeStatus("not available");
     const sd = new Date(startDate);
     const fd = new Date(finishDate);
+    const today = new Date();
     const num = (fd - sd) / (24 * 60 * 60 * 1000) + 1;
-    if (num > daysLabel) {
+    if (sd < today) {
+      setStartError(true);
+      setFinishError(false);
+      setDaysError(false);
+    } else if (fd < sd) {
+      setStartError(false);
+      setFinishError(true);
+      setDaysError(false);
+    } else if (num > daysLabel) {
+      setStartError(false);
+      setFinishError(false);
       setDaysError(true);
     } else {
+      setStartError(false);
+      setFinishError(false);
       setDaysError(false);
       firebaseTools.dayOffUpdate(typeLabel, daysLabel - num);
       firebaseTools.newEvent({
@@ -101,6 +116,8 @@ export const ModalTimeOff = ({ typeLabel, daysLabel, className }) => {
         </ModalBody>
         <ModalFooter>
           {daysError && <div>Error: you don't have enough days</div>}
+          {startError && <div>Error: start date should be in the future</div>}
+          {finishError && <div>Error: the end should be after the beginning</div>}
           <Button color="primary" onClick={submit}>
             Submit
           </Button>
