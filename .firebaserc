@@ -1,6 +1,5 @@
 {
   "projects": {
-    "default": "frozen-hr",
-    "fhr": "frozen-hr"
+    "default": "frozen-hr"
   }
 }

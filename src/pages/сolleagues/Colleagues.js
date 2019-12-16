@@ -16,7 +16,6 @@ export const Colleagues = () => {
 
   useEffect(() => {
     firebaseTools.allUsers().then(userList => {
-      console.log({ userList });
       setAll(userList);
     });
   }, []);
@@ -36,7 +35,6 @@ export const Colleagues = () => {
     </div>
   );
 
-  console.log({ s: usersInfo.searchList, all });
   return profile.userId ? (
     <div>
       <div className="workplace-vertical-divs">
