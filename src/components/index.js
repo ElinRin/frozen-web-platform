@@ -12,6 +12,5 @@ export { BirthdaysLayout } from "./birthdays-layout/BirthdaysLayout";
 export { NewsLayout } from "./news-layout/NewsLayout";
 export { CustomCalendar } from "./calendar/CustomCalendar";
 export { ModalNewEvent } from "./modal-new-event/ModalNewEvent";
-export { ParkingWidget } from "./parking/ParkingWidget";
 export { EventsLayout } from "./events-layout/EventsLayout";
 export { Loader } from "./loader/Loader";

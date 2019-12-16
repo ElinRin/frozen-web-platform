@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import { ModalNewEvent } from "../modal-new-event/ModalNewEvent";
 
-import map from "../../mocks/office-map.jpg";
+import map from "../../mocks/office-map.jpeg";
 import plus from "../../mocks/plus_svg.svg";
 
 import "./MeetingMap.css";

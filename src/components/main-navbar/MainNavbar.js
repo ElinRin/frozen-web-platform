@@ -27,8 +27,11 @@ export const MainNavbar = () => {
   const path = usePath();
   const toggle = () => setIsOpen(!isOpen);
 
+  console.log({ id: profile.userId, cookies });
+
   if (path !== "/login" && !(profile.userId && profile.userId.length)) {
     if (cookies.token) {
+      console.log({ id: profile.userId, cookies });
       loginUserByToken(cookies.token, profileDispatch).then(id => {
         fetchMe(profileDispatch).catch(error => console.log(error));
       });

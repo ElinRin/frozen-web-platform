@@ -21,12 +21,13 @@ export const loginUser = async (user, dispatch) => {
 
 export const loginUserByToken = async (token, dispatch) => {
   await firebaseTools.loginUserByToken(token);
+  let userId = firebaseTools.currentUserId();
   await dispatch({
     type: LOGIN_USER,
-    payload: { userId: firebaseTools.currentUserId() }
+    payload: { userId: userId }
   });
 
-  return firebaseTools.currentUserId();
+  return userId;
 };
 
 export const logoutUser = async dispatch => {

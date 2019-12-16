@@ -1,6 +1,6 @@
 import React from "react";
 
-import map from "../../mocks/office-map.jpg";
+import map from "../../mocks/office-map.jpeg";
 import { WorkplaceMapSeat } from "..";
 
 import "./WorkplaceMap.css";
@@ -15,9 +15,10 @@ export const WorkplaceMap = ({ listToDisplay }) => {
             id={item.id}
             x={item.x}
             y={item.y}
-            color={item.userId === undefined ? '#1c7430' : '#e20074'}
+            color={item.userId === undefined ? "#1c7430" : "#e20074"}
             uid={item.userId}
-            key={`${item.x}${item.y}`}/>
+            key={`${item.x}${item.y}`}
+          />
         ))}
       </div>
     </div>

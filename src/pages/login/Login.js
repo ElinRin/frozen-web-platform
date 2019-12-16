@@ -14,8 +14,10 @@ export const Login = ({ history }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  console.log({ id: profile.userId, cookies });
   if (!(profile.userId && profile.userId.length)) {
     if (cookies.token) {
+      console.log({ id: profile.userId, cookies });
       loginUserByToken(cookies.token, profileDispatch);
       navigate("./main", true);
     }
@@ -31,7 +33,7 @@ export const Login = ({ history }) => {
     ) {
       await loginUser({ email, password }, profileDispatch);
 
-      if (!firebaseTools.currentUser()) {
+      if (!profile.userId) {
         setError(true);
       } else {
         firebaseTools

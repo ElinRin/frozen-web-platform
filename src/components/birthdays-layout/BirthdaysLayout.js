@@ -5,9 +5,9 @@ import { firebaseTools } from "../../utils/firebase";
 import { navigate, usePath } from "hookrouter";
 
 export const BirthdaysLayout = () => {
-  const today = new Date();
   const [birthday, setBirthday] = useState([]);
   useEffect(() => {
+    const today = new Date();
     firebaseTools
       .allUsers()
       .then(
@@ -29,7 +29,7 @@ export const BirthdaysLayout = () => {
             .sort((a, b) => a.age - b.age)
       )
       .then(a => setBirthday(a));
-  }, [today]);
+  }, []);
 
   return (
     <div className="birthdays-wrapper">
