@@ -72,6 +72,6 @@
     "babel-preset-react-app": "^9.1.0",
     "electron": "^7.1.5",
     "electron-builder": "^21.2.0",
-    "electron-webpack": "^2.7.4"
+    "electron-webpack": "^2.8.2"
   }
 }
